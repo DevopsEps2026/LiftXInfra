@@ -33,6 +33,49 @@
     .about-page .about-title span {
       color: #b38700;
     }
+    .about-page .business-id-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 26px;
+      padding: 16px 20px;
+      border: 1px solid #e4eaf0;
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 8px 8px 0;
+      background: linear-gradient(110deg, #fff, #f5f8fa);
+      box-shadow: 0 8px 24px rgb(9 39 67 / 7%);
+    }
+    .about-page .business-id-mark {
+      display: grid;
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--yellow);
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .about-page .business-id-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+    .about-page .business-id-number {
+      display: block;
+      color: var(--navy);
+      font-size: clamp(15px, 2vw, 19px);
+      font-weight: 800;
+      letter-spacing: .7px;
+      line-height: 1.35;
+    }
     .about-page .about-values-heading {
       margin: 0 0 14px;
       color: var(--navy);
@@ -153,6 +196,13 @@
           <p><strong>At LiftX Infra, we aim to build more than projects—we strive to build lasting partnerships and stronger possibilities for the future.</strong></p>
           <p><strong>LiftX Infra — Lifting Today. Building Tomorrow.</strong></p>
           <a class="button button-navy" href="contact.html">Let’s Build Together <span>→</span></a>
+          <div class="business-id-card" aria-label="LiftX Infra GSTIN number 07BRGPR7548C2ZI">
+            <span class="business-id-mark" aria-hidden="true">✓</span>
+            <div>
+              <span class="business-id-label">GST Identification Number</span>
+              <strong class="business-id-number">07BRGPR7548C2ZI</strong>
+            </div>
+          </div>
           <div class="about-details">
             <div>
               <h2 class="about-values-heading">Our Core Values</h2>
