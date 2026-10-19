@@ -3,12 +3,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="LiftX Infra delivers crane services, civil engineering, real estate and AI-enabled infrastructure solutions.">
+  <meta name="description" content="LiftX Infra delivers crane and JCB services, civil works, real estate and AI-enabled infrastructure solutions.">
   <title>LiftX Infra | Lifting Today. Building Tomorrow.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="technology-menu.css">
+  <style>
+    .hero {
+      background-image: none;
+    }
+    .hero-slides,
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-slides {
+      overflow: hidden;
+    }
+    .hero-slide {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 48%;
+      opacity: 0;
+      transition: opacity 900ms ease;
+    }
+    .hero-slide.is-active {
+      opacity: 1;
+    }
+    .hero-shade {
+      z-index: 1;
+    }
+    .hero-content {
+      z-index: 2;
+    }
+    .hero-caption {
+      z-index: 2;
+    }
+    .hero-slider-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .hero-slider-controls button {
+      display: inline-grid;
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+      place-items: center;
+      border: 1px solid rgb(255 255 255 / 60%);
+      border-radius: 20px;
+      background: rgb(3 29 52 / 45%);
+      color: white;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .hero-slider-controls button[aria-current="true"] {
+      border-color: var(--yellow);
+      background: var(--yellow);
+      color: var(--navy);
+    }
+    .hero-slider-controls button:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slide {
+        transition: none;
+      }
+    }
+    .service-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .service-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border: 0;
+      transform: none;
+      width: auto;
+      height: auto;
+      background: linear-gradient(0deg, rgb(6 37 68 / 72%), transparent 72%);
+    }
+    .service-art::after {
+      display: none;
+    }
+    .service-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .service-art .art-label {
+      z-index: 2;
+      color: #fff;
+      bottom: 12px;
+      left: 14px;
+    }
+    .clients-section {
+      overflow: hidden;
+    }
+    .clients-section .section-heading {
+      align-items: center;
+    }
+    .clients-section .section-heading > .clients-intro {
+      max-width: 430px;
+      margin: 0 0 4px;
+      padding: 4px 0 4px 20px;
+      border-left: 3px solid var(--yellow);
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .clients-intro span {
+      display: block;
+      margin-bottom: 5px;
+      color: #a47b00;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+    .client-slider {
+      overflow: hidden;
+    }
+    .client-slider-track {
+      display: flex;
+      align-items: stretch;
+      gap: 18px;
+      transition: transform 600ms ease;
+    }
+    .client-slide {
+      flex: 0 0 calc((100% - 54px) / 4);
+      min-width: 0;
+    }
+    .client-card {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      height: 180px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgb(9 39 67 / 6%);
+    }
+    .client-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .client-slider-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .client-slider-controls button {
+      display: inline-grid;
+      min-width: 34px;
+      height: 34px;
+      padding: 0 9px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
+      color: var(--navy);
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .client-slider-controls button[aria-current="true"] {
+      border-color: var(--yellow);
+      background: var(--yellow);
+    }
+    .client-slider-controls button:focus-visible {
+      outline: 2px solid var(--navy);
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .client-slider-track {
+        transition: none;
+      }
+    }
+    @media (max-width: 950px) {
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .client-slide {
+        flex-basis: calc((100% - 18px) / 2);
+      }
+    }
+    @media (max-width: 420px) {
+      .client-slide {
+        flex-basis: 100%;
+      }
+    }
+    @media (max-width: 420px) {
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -18,24 +223,56 @@
     </a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav class="nav">
-      <a href="#home">Home</a><a href="#about">About Us</a><a href="#services">Services</a>
-      <a href="#projects">Projects</a><a href="#technology">Technology</a><a href="#contact">Contact</a>
-      <a class="nav-cta" href="#contact">Get a Quote <span>↗</span></a>
+      <a href="#home" aria-current="page">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a>
+      <a href="#clients">Clients</a><a href="projects.html">Projects</a>
+      <div class="technology-nav-item">
+        <button class="technology-menu-toggle" type="button" aria-expanded="false" aria-controls="technologyDropdown">Technology <span class="technology-menu-chevron" aria-hidden="true">▾</span></button>
+        <div class="technology-dropdown" id="technologyDropdown" hidden>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">▣</span>Managed IT Services</h2><ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♢</span>Cybersecurity</h2><ul><li>MSSP</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">&lt;/&gt;</span>Software Development</h2><ul><li>Web Apps</li><li>Mobile Apps</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">☁</span>Cloud &amp; Infrastructure</h2><ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Data Centers</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♧</span>IT Consulting</h2><ul><li>Digital Transformation</li><li>IT Strategy</li><li>BI &amp; Analytics</li><li>ERP &amp; CRM</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♙</span>IT Staffing &amp; Training</h2><ul><li>Staff Augmentation</li><li>IT Recruitment</li><li>Training &amp; Certification</li><li>Outsourcing</li></ul></section>
+          <div class="technology-menu-footer"><a href="technology.html">Explore Technology <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a>
+      <a href="careers.html">Careers</a>
+      <a class="nav-cta" href="contact.html">Get a Quote <span>↗</span></a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="home">
+      <div class="hero-slides" aria-hidden="true">
+        <img class="hero-slide is-active" src="images/100%20Ton%26500%20Ton.png" alt="">
+        <img class="hero-slide" src="images/Civil1.png" alt="">
+        <img class="hero-slide" src="images/Civil2.png" alt="">
+        <img class="hero-slide" src="images/Civil3.png" alt="">
+        <img class="hero-slide" src="images/Crane.jpg" alt="">
+        <img class="hero-slide" src="images/Hydra%20crane.jpg" alt="">
+      </div>
       <div class="hero-shade"></div>
       <div class="hero-content container">
-        <p class="eyebrow">CRANE SERVICES <i>•</i> CIVIL WORKS <i>•</i> REAL ESTATE <i>•</i> AI SOLUTIONS</p>
+        <p class="eyebrow">CRANE SERVICES <i>•</i> JCB SERVICES <i>•</i> CIVIL WORKS <i>•</i> REAL ESTATE <i>•</i> AI BASE SOLUTIONS</p>
         <h1>We lift your vision.<br><span>We build what’s next.</span></h1>
-        <p class="hero-copy">Reliable crane services, quality civil engineering and forward-looking infrastructure solutions — delivered with safety at the centre.</p>
+        <p class="hero-copy">Reliable crane and JCB services, quality civil works and forward-looking infrastructure solutions — delivered with safety at the centre.</p>
         <div class="hero-actions">
-          <a class="button button-yellow" href="#services">Explore Services <span>→</span></a>
-          <a class="button button-outline" href="#contact">Talk to Our Team</a>
+          <a class="button button-yellow" href="services.html">Explore Services <span>→</span></a>
+          <a class="button button-outline" href="contact.html">Talk to Our Team</a>
         </div>
         <div class="hero-proof"><span class="proof-icon">✓</span><span>Safety-led delivery</span><span class="proof-dot">•</span><span>Built around your project</span></div>
+        <div class="hero-slider-controls" role="group" aria-label="Homepage image slides">
+          <button type="button" data-slide-direction="-1" aria-label="Previous image">←</button>
+          <button type="button" data-slide-to="0" aria-label="Show image 1" aria-current="true">1</button>
+          <button type="button" data-slide-to="1" aria-label="Show image 2">2</button>
+          <button type="button" data-slide-to="2" aria-label="Show image 3">3</button>
+          <button type="button" data-slide-to="3" aria-label="Show image 4">4</button>
+          <button type="button" data-slide-to="4" aria-label="Show image 5">5</button>
+          <button type="button" data-slide-to="5" aria-label="Show image 6">6</button>
+          <button type="button" data-slide-direction="1" aria-label="Next image">→</button>
+        </div>
       </div>
       <div class="hero-caption">ENGINEERING PROGRESS. EVERY DAY.</div>
     </section>
@@ -49,96 +286,38 @@
       </div>
     </section>
 
-    <section class="section container" id="services">
+    <section class="section container clients-section" id="clients" aria-labelledby="clients-heading">
       <div class="section-heading">
-        <div><p class="eyebrow dark">WHAT WE DO</p><h2>Solutions that move<br>projects forward.</h2></div>
-        <p>From heavy lifting to civil works and smart infrastructure, LiftX Infra brings services together to help projects move safely and confidently.</p>
+        <div><p class="eyebrow dark">OUR CLIENTS</p><h2 id="clients-heading">Trusted partnerships.<br>Shared progress.</h2></div>
+        <p class="clients-intro"><span>Growing together</span>We’re proud to work with organizations across manufacturing, infrastructure, consumer goods and more.</p>
       </div>
-      <div class="service-grid">
-        <article class="service-card">
-          <div class="service-art crane-art"><span class="art-symbol">↗</span><span class="art-label">LIFTING & LOGISTICS</span></div>
-          <div class="service-body"><span class="service-number">01 / LIFT</span><h3>Crane Services</h3><p>Crane hire, lifting support and equipment solutions planned around site conditions, timelines and safety requirements.</p><a href="#contact" class="text-link" data-service="Crane Services">Request crane support <span>→</span></a></div>
-        </article>
-        <article class="service-card">
-          <div class="service-art civil-art"><span class="art-symbol">▥</span><span class="art-label">CIVIL & INFRASTRUCTURE</span></div>
-          <div class="service-body"><span class="service-number">02 / BUILD</span><h3>Civil Engineering</h3><p>Construction and civil works with a focus on quality, coordination, efficient execution and dependable delivery.</p><a href="#contact" class="text-link" data-service="Civil Engineering">Discuss your project <span>→</span></a></div>
-        </article>
-        <article class="service-card">
-          <div class="service-art realestate-art"><span class="art-symbol">⌂</span><span class="art-label">PROPERTY & DEVELOPMENT</span></div>
-          <div class="service-body"><span class="service-number">03 / DEVELOP</span><h3>Real Estate</h3><p>Development and project support designed to create lasting value, practical spaces and stronger communities.</p><a href="#contact" class="text-link" data-service="Real Estate">Explore opportunities <span>→</span></a></div>
-        </article>
-        <article class="service-card">
-          <div class="service-art ai-art"><span class="art-symbol">⌘</span><span class="art-label">SMARTER OPERATIONS</span></div>
-          <div class="service-body"><span class="service-number">04 / INNOVATE</span><h3>AI & Smart Solutions</h3><p>Explore data-led monitoring, workflow automation and digital tools that can improve visibility and site efficiency.</p><a href="#contact" class="text-link" data-service="AI & Smart Solutions">Explore smart solutions <span>→</span></a></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="about-section" id="about">
-      <div class="container about-grid">
-        <div class="about-visual">
-          <div class="about-image"><div class="image-label"><span>BUILT ON TRUST</span><b>Progress takes teamwork.</b></div></div>
-          <div class="yellow-block"></div>
+      <div class="client-slider" data-client-slider role="region" aria-roledescription="carousel" aria-label="LiftX Infra clients">
+        <div class="client-slider-track">
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="1 of 17"><div class="client-card"><img src="Clients/01_Tata_Motors.png" alt="Tata Motors" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="2 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/02_Micron_Technology.png" alt="Micron Technology" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="3 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/03_Bosch_Rexroth.png" alt="Bosch Rexroth" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="4 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/04_Hitachi_HiRel.png" alt="Hitachi Hi-Rel" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="5 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/05_Nestle_India.png" alt="Nestle India" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="6 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/06_Coca_Cola.png" alt="Coca-Cola" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="7 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/07_NIVEA.png" alt="NIVEA" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="8 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/08_Colgate_Palmolive.png" alt="Colgate-Palmolive" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="9 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/09_POSCO.png" alt="POSCO" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="10 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/10_Maxxis.png" alt="Maxxis" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="11 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/11_JBM_Group.png" alt="JBM Group" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="12 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/12_Motherson.png" alt="Motherson" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="13 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/13_Emcure_Pharmaceuticals.png" alt="Emcure Pharmaceuticals" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="14 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/14_UFlex.png" alt="UFlex" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="15 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/15_Inductotherm.png" alt="Inductotherm" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="16 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/16_Ford.png" alt="Ford" loading="lazy"></div></div>
+          <div class="client-slide" role="group" aria-roledescription="slide" aria-label="17 of 17" aria-hidden="true"><div class="client-card"><img src="Clients/17_Larsen_and_Toubro_LandT.png" alt="Larsen &amp; Toubro" loading="lazy"></div></div>
         </div>
-        <div class="about-copy">
-          <p class="eyebrow dark">ABOUT LIFTX INFRA</p>
-          <h2>Strong foundations.<br><span>Higher possibilities.</span></h2>
-          <p>LiftX Infra brings together crane services, civil engineering, real estate and emerging technology under one forward-looking brand. We believe good projects begin with clear communication, careful planning and a commitment to doing the job right.</p>
-          <p>Our goal is simple: build trusted partnerships and deliver practical solutions that help customers move from plan to progress.</p>
-          <a class="button button-navy" href="#contact">Let’s Build Together <span>→</span></a>
-          <div class="values">
-            <div><span class="value-icon">✓</span><div><b>Safety matters</b><small>Plan carefully. Work responsibly.</small></div></div>
-            <div><span class="value-icon">◇</span><div><b>Quality in every detail</b><small>Consistent, professional execution.</small></div></div>
-            <div><span class="value-icon">↗</span><div><b>Ready for what’s next</b><small>Open to smarter ways of working.</small></div></div>
-          </div>
+        <div class="client-slider-controls" role="group" aria-label="Client carousel controls">
+          <button type="button" data-client-direction="-1" aria-label="Previous clients">←</button>
+          <button type="button" data-client-direction="1" aria-label="Next clients">→</button>
         </div>
       </div>
     </section>
 
-    <section class="section container projects-section" id="projects">
-      <div class="section-heading">
-        <div><p class="eyebrow dark">OUR WORK</p><h2>Made for real-world<br>challenges.</h2></div>
-        <p>Use this section to showcase completed work, equipment capabilities and project stories as your portfolio grows.</p>
-      </div>
-      <div class="project-grid">
-        <article class="project-card project-one"><div class="project-overlay"><span>CRANE SERVICES</span><h3>Heavy lifting support</h3><p>Project showcase placeholder</p></div></article>
-        <article class="project-card project-two"><div class="project-overlay"><span>CIVIL ENGINEERING</span><h3>Infrastructure works</h3><p>Project showcase placeholder</p></div></article>
-        <article class="project-card project-three"><div class="project-overlay"><span>SMART INFRASTRUCTURE</span><h3>Technology in action</h3><p>Project showcase placeholder</p></div></article>
-      </div>
-      <p class="portfolio-note">Portfolio note: replace these sample project panels with real project photos and approved details before publishing.</p>
-    </section>
-
-    <section class="technology-section" id="technology">
-      <div class="container technology-inner">
-        <div><p class="eyebrow">LOOKING AHEAD</p><h2>Infrastructure,<br>made smarter.</h2></div>
-        <div class="technology-copy"><p>We’re interested in practical technology that helps teams make better decisions — from digital reporting and workflow automation to AI-enabled monitoring concepts.</p><a href="#contact" class="button button-yellow">Discuss an Idea <span>→</span></a></div>
-        <div class="tech-orbit" aria-hidden="true"><span>AI</span><i></i><b></b><em></em></div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-copy">
-          <p class="eyebrow dark">LET’S TALK</p><h2>Have a project<br>in mind?</h2>
-          <p>Tell us what you’re planning. Share a few details and the LiftX Infra team can follow up with you.</p>
-          <div class="contact-detail"><span>✉</span><div><small>EMAIL</small><b>your-email@example.com</b></div></div>
-          <div class="contact-detail"><span>☎</span><div><small>PHONE</small><b>+91 XXXXX XXXXX</b></div></div>
-          <div class="contact-detail"><span>⌖</span><div><small>LOCATION</small><b>Your office address, India</b></div></div>
-          <p class="replace-note">Replace the sample contact details before publishing.</p>
-        </div>
-        <form class="quote-form" id="quoteForm">
-          <h3>Request a quote</h3><p>Fields marked * are required.</p>
-          <div class="form-row"><label>Your name *<input name="name" required autocomplete="name" placeholder="Full name"></label><label>Company<input name="company" autocomplete="organization" placeholder="Company name"></label></div>
-          <div class="form-row"><label>Email address *<input type="email" name="email" required autocomplete="email" placeholder="you@company.com"></label><label>Phone number<input type="tel" name="phone" autocomplete="tel" placeholder="+91"></label></div>
-          <label>Service you’re interested in *
-            <select name="service" required><option value="">Choose a service</option><option>Crane Services</option><option>Civil Engineering</option><option>Real Estate</option><option>AI & Smart Solutions</option><option>Multiple Services</option></select>
-          </label>
-          <label>Project details *<textarea name="message" required rows="4" placeholder="Tell us about your project, location and timeline..."></textarea></label>
-          <button class="button button-yellow submit-button" type="submit">Prepare Enquiry <span>→</span></button>
-          <p class="form-status" id="formStatus" role="status">This demo prepares an email draft; it does not send data to a server.</p>
-        </form>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">

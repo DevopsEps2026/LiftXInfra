@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore LiftX Infra crane, JCB, civil works, real estate and smart infrastructure services.">
+  <title>Services | LiftX Infra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="technology-menu.css">
+  <style>
+    .services-page .service-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .services-page .section-heading h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(31px, 3.5vw, 43px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.17;
+    }
+    .services-page .service-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border: 0;
+      transform: none;
+      width: auto;
+      height: auto;
+      background: linear-gradient(0deg, rgb(6 37 68 / 72%), transparent 72%);
+    }
+    .services-page .service-art::after {
+      display: none;
+    }
+    .services-page .service-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .services-page .service-art .art-label {
+      z-index: 2;
+      color: #fff;
+      bottom: 12px;
+      left: 14px;
+    }
+    @media (max-width: 950px) {
+      .services-page .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 420px) {
+      .services-page .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="services-page">
+  <header class="site-header">
+    <a class="brand" href="index.html#home" aria-label="LiftX Infra home"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav">
+      <a href="index.html#home">Home</a><a href="about.html">About Us</a><a href="services.html" aria-current="page">Services</a>
+      <a href="index.html#clients">Clients</a><a href="projects.html">Projects</a>
+      <div class="technology-nav-item">
+        <button class="technology-menu-toggle" type="button" aria-expanded="false" aria-controls="technologyDropdown">Technology <span class="technology-menu-chevron" aria-hidden="true">▾</span></button>
+        <div class="technology-dropdown" id="technologyDropdown" hidden>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">▣</span>Managed IT Services</h2><ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♢</span>Cybersecurity</h2><ul><li>MSSP</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">&lt;/&gt;</span>Software Development</h2><ul><li>Web Apps</li><li>Mobile Apps</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">☁</span>Cloud &amp; Infrastructure</h2><ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Data Centers</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♧</span>IT Consulting</h2><ul><li>Digital Transformation</li><li>IT Strategy</li><li>BI &amp; Analytics</li><li>ERP &amp; CRM</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♙</span>IT Staffing &amp; Training</h2><ul><li>Staff Augmentation</li><li>IT Recruitment</li><li>Training &amp; Certification</li><li>Outsourcing</li></ul></section>
+          <div class="technology-menu-footer"><a href="technology.html">Explore Technology <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a>
+      <a href="careers.html">Careers</a>
+      <a class="nav-cta" href="contact.html">Get a Quote <span>↗</span></a>
+    </nav>
+  </header>
+  <main>
+    <section class="section container" id="services">
+      <div class="section-heading">
+        <div><p class="eyebrow dark">WHAT WE DO</p><h1>Solutions that move<br>projects forward.</h1></div>
+        <p>From crane and JCB services to civil works and smart infrastructure, LiftX Infra brings services together to help projects move safely and confidently.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-art crane-art"><img src="assets/crane-services.jpg" alt="LiftX Infra Escorts Hydra crane at a work site" loading="lazy"><span class="art-label">LIFTING & LOGISTICS</span></div>
+          <div class="service-body"><span class="service-number">01 / LIFT</span><h3>Crane Services</h3><p>Crane hire, lifting support and equipment solutions planned around site conditions, timelines and safety requirements.</p><a href="contact.html?service=Crane%20Services" class="text-link" data-service="Crane Services">Request crane support <span>→</span></a></div>
+        </article>
+        <article class="service-card">
+          <div class="service-art jcb-art"><img src="https://images.unsplash.com/photo-1580901368919-7738efb0f87e?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Yellow excavator working on a construction site" loading="lazy"><span class="art-label">EARTHMOVING & SITE WORKS</span></div>
+          <div class="service-body"><span class="service-number">02 / EXCAVATE</span><h3>JCB Services</h3><p>JCB hire for excavation, site preparation, trenching and material handling, scheduled around your project needs.</p><a href="contact.html?service=JCB%20Services" class="text-link" data-service="JCB Services">Request JCB support <span>→</span></a></div>
+        </article>
+        <article class="service-card">
+          <div class="service-art civil-art"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Modern building under construction" loading="lazy"><span class="art-label">CIVIL & INFRASTRUCTURE</span></div>
+          <div class="service-body"><span class="service-number">03 / BUILD</span><h3>Civil Works</h3><p>Construction and civil works with a focus on quality, coordination, efficient execution and dependable delivery.</p><a href="contact.html?service=Civil%20Engineering" class="text-link" data-service="Civil Engineering">Discuss your project <span>→</span></a></div>
+        </article>
+        <article class="service-card">
+          <div class="service-art realestate-art"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Contemporary residential property" loading="lazy"><span class="art-label">PROPERTY & DEVELOPMENT</span></div>
+          <div class="service-body"><span class="service-number">04 / DEVELOP</span><h3>Real Estate</h3><p>Development and project support designed to create lasting value, practical spaces and stronger communities.</p><a href="contact.html?service=Real%20Estate" class="text-link" data-service="Real Estate">Explore opportunities <span>→</span></a></div>
+        </article>
+        <article class="service-card">
+          <div class="service-art ai-art"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Digital circuit board representing smart technology" loading="lazy"><span class="art-label">SMARTER OPERATIONS</span></div>
+          <div class="service-body"><span class="service-number">05 / INNOVATE</span><h3>AI & Technology Base Solutions</h3><p>Explore data-led monitoring, workflow automation and digital tools that can improve visibility and site efficiency.</p><a href="contact.html?service=AI%20%26%20Technology%20Base%20Solutions" class="text-link" data-service="AI & Technology Base Solutions">Explore smart solutions <span>→</span></a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-top"><a class="brand footer-brand" href="index.html#home"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></a><p>Building progress through lifting, engineering and innovation.</p><a class="back-top" href="#services">Back to top ↑</a></div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> LiftX Infra. All rights reserved.</span><span>Safety · Quality · Progress</span></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
