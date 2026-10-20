@@ -25,6 +25,7 @@ Responsive, multi-page static website for LiftX Infra, built with HTML, CSS and 
 | `careers.html` | Open roles, qualifications, benefits and application links |
 | `style.css` | Shared site layout, design tokens, components and responsive rules |
 | `theme.css` | Shared light-blue palette for six pages; Technology and Crane IoT Monitoring retain their original dark themes |
+| `brand-colors.css` | Final shared semantic color layer: infrastructure Navy/Gold, technology Blue/Cyan, content links and table borders |
 | `technology-menu.css` | Shared Technology dropdown styles and responsive behavior |
 | `script.js` | Shared navigation, dropdown, slideshow, client carousel, enquiry form and footer-year behavior |
 | `assets/` | Local service and supporting images used by site pages |
@@ -55,10 +56,14 @@ Keep these paths and filenames in place when publishing: the HTML pages refer to
 | Pages | Theme |
 | --- | --- |
 | Home, About, Services, Projects, Contact, Careers | Light-blue canvas `#eef6fd`, alternate sections `#e2effb`, white cards and navy headings |
-| Technology | Original dark navy sections, white text and gold accents |
-| Crane IoT master and individual views | Original dark monitoring panels, green/gold chart accents and clearly labeled demo notices |
+| Technology | Dark navy sections retained, with white text and Blue/Cyan technology accents |
+| Crane IoT master and individual views | Dark monitoring panels retained, cyan/periwinkle chart lines and clearly labeled demo notices; status/warning colors retain their meaning |
 
-Load `style.css` and `technology-menu.css` on every page. Load `theme.css` last on the six light-themed pages, after inline page styles. Do not add it to `technology.html` or `crane-monitoring.html`; their dark themes are intentional. Monitoring also loads `crane-monitoring.css`.
+Load `style.css` and `technology-menu.css` on every page. Load `theme.css` on the six light-themed pages after inline page styles. Do not add it to `technology.html` or `crane-monitoring.html`; their dark backgrounds are intentional. Monitoring also loads `crane-monitoring.css`. Load `brand-colors.css` last on all eight pages so semantic accent rules apply consistently.
+
+Infrastructure (crane, JCB, civil/construction and real estate) retains Navy `#062544` and Gold `#ffc928`. Get a Quote navigation buttons remain gold on every page. Technology menus, AI/technology service cards, IoT services, technology careers and technology actions use Blue `#175ea8` and Cyan `#4ddcf5`; dark cyan `#08758b` is used for small text on light surfaces. The LXI logo and company wordmark keep their existing branding.
+
+Content paragraph links and text links use `#464feb` without underlines on light surfaces; dark-page links use high-contrast cyan. Navigation, branded buttons and image-overlay links retain their component colors. Tables have `1px solid #e6e6e6` cell borders and `#f5f5f5` headers by default; monitoring tables retain dark headers and appropriate dark-theme borders for legibility.
 
 Photo overlays, primary buttons, status badges and the navy footer retain contrasting colors. Responsive layouts use CSS media queries; carousel animation respects `prefers-reduced-motion`.
 
@@ -67,7 +72,7 @@ Photo overlays, primary buttons, status badges and the navy footer retain contra
 - The homepage hero rotates six local images every **2 seconds**, with previous, next and numbered controls. The first image is `images/100 Ton&500 Ton.png`; the remaining slides are `Civil1.png`, `Civil2.png`, `Civil3.png`, `Crane.jpg` and `Hydra crane.jpg` in the same folder. HTML URLs encode spaces and special characters.
 - Hero autoplay pauses when the page is hidden or its controls are hovered/focused, and does not autoplay for reduced-motion visitors.
 - The client carousel contains **17 local logos**, displays multiple logos per row and advances every **5 seconds**. It pauses on hover/focus or hidden pages and responds to resizing and reduced-motion preferences.
-- About is a separate page with company background, core values, founder Mr. Amarnath Rai and a prominent GSTIN card showing exactly `07BRGPR7548C2ZI`.
+- About is a separate page with company background, core values, founder Mr. Amarnath Rai and a prominent GSTIN card showing exactly `07BRGPR7548C2ZI`. Its profile covers crane/JCB, civil construction, real estate, all eight Technology service areas, industrial automation and the proposed Crane IoT integration. Links lead to Services, Technology and monitoring. The existing combined-experience statement and tagline remain; the monitoring paragraph explicitly distinguishes the 12-crane simulation from live deployment and retains read-only safety limitations.
 - Projects presents six portfolio/capability cards. Review project descriptions, imagery and claims before publication.
 
 ### Technology and Services
@@ -126,7 +131,7 @@ No dependencies need to be installed. Google Fonts, Unsplash images used on some
 
 - **Navigation:** Update the shared `<nav>` in each HTML page when adding or renaming a page.
 - **Technology taxonomy:** Keep the eight menu copies, Technology headings/lists, Services summary links and Careers service coverage synchronized. Preserve the existing anchor IDs or update all incoming links together.
-- **Themes:** Change shared light-blue colors in `theme.css`; change Technology's inline styles or `crane-monitoring.css` for dark-page styling. Avoid global overrides that recolor the two dark pages.
+- **Themes:** Change shared light-blue backgrounds in `theme.css`, semantic accent/link/table colors in `brand-colors.css`, and dark layout surfaces in Technology's inline styles or `crane-monitoring.css`. Keep `brand-colors.css` last. Avoid changing infrastructure gold or status/warning colors when adjusting technology accents.
 - **Header logo:** All eight page headers position `assets/liftx-logo.png` at the far-left edge, separately from the LiftX Infra name and tagline, while retaining the same home link. Shared `.site-header .brand-logo` and `.brand-text` rules in `style.css` reserve space to prevent overlap at desktop/mobile sizes. Footer text branding is unchanged.
 - **Homepage hero:** Keep the `.hero-slide` images and `[data-slide-to]` buttons in `index.html` in the same order and count. Change the autoplay interval in `script.js` if the timing should change.
 - **Client logos:** Add or replace images in `Clients/` and update the client-slide markup in `index.html` as needed. The carousel timing is configured in `script.js`.

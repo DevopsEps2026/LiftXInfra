@@ -1,0 +1,153 @@
+:root {
+  --infrastructure-gold: #ffc928;
+  --technology-blue: #175ea8;
+  --technology-cyan: #4ddcf5;
+  --technology-ink: #08758b;
+  --content-link: #464feb;
+}
+
+main p a:not(.button),
+main .text-link {
+  color: var(--content-link);
+  text-decoration: none;
+}
+
+main a:focus-visible {
+  outline: 2px solid var(--technology-blue);
+  outline-offset: 4px;
+}
+
+tr th,
+tr td {
+  border: 1px solid #e6e6e6;
+}
+
+tr th {
+  background-color: #f5f5f5;
+}
+
+.nav-cta {
+  background: var(--infrastructure-gold);
+  color: var(--navy);
+}
+
+.technology-menu-intro strong em {
+  color: var(--technology-cyan);
+}
+
+.technology-menu-intro p::after {
+  background: var(--technology-cyan);
+}
+
+.technology-menu-group .technology-menu-icon {
+  border-color: #bde8f1;
+  background: #e9f9fd;
+  color: var(--technology-blue);
+}
+
+.technology-menu-group:nth-of-type(even) .technology-menu-icon {
+  color: var(--technology-ink);
+}
+
+.technology-menu-intro .technology-menu-back:focus-visible {
+  outline-color: var(--technology-cyan);
+}
+
+.digital-services .eyebrow.dark,
+.digital-services .service-number,
+.digital-services .text-link span,
+.technology-careers .career-category,
+.technology-careers .career-card h3 span,
+.technology-careers .text-link span,
+.service-card:has(.ai-art) .service-number,
+.service-card:has(.ai-art) .text-link span {
+  color: var(--technology-ink);
+}
+
+.services-page .digital-service-card {
+  border-top: 3px solid var(--technology-blue);
+}
+
+.service-card:has(.ai-art) {
+  border-top: 3px solid var(--technology-blue);
+}
+
+.services-page .crane-iot-service,
+.technology-careers .career-card {
+  border-top: 3px solid var(--technology-cyan);
+}
+
+.technology-section .button-yellow,
+.technology-page main .button-yellow,
+.services-page .crane-iot-service .button,
+.careers-hero .button[href="#technology-careers"] {
+  background: var(--technology-blue);
+  color: #fff;
+}
+
+.technology-section .button-yellow:hover,
+.technology-page main .button-yellow:hover,
+.services-page .crane-iot-service .button:hover,
+.careers-hero .button[href="#technology-careers"]:hover {
+  background: #104a87;
+}
+
+.technology-section .eyebrow,
+.tech-orbit span {
+  color: var(--technology-ink);
+}
+
+.tech-orbit,
+.tech-orbit i,
+.tech-orbit b,
+.tech-orbit em {
+  border-color: #24a5c2;
+}
+
+.technology-page main,
+.monitoring-page main {
+  --yellow: var(--technology-cyan);
+}
+
+.technology-page .technology-service-number {
+  border-color: #297893;
+}
+
+.technology-page main p a:not(.button),
+.technology-page .tech-orbit span,
+.technology-page .technology-section .eyebrow {
+  color: var(--technology-cyan);
+}
+
+.monitoring-page main {
+  --mint: var(--technology-cyan);
+}
+
+.monitoring-page #start-demo {
+  background: #17527d;
+}
+
+.monitoring-page .badge-mint {
+  background: #163e55;
+}
+
+.monitoring-page .demo-notice {
+  border-left-color: var(--infrastructure-gold);
+}
+
+.monitoring-page .trend-load {
+  stroke: #a1baff;
+}
+
+.monitoring-page .trend-key span:last-child {
+  color: #a1baff;
+}
+
+.monitoring-page .iot-table th,
+.monitoring-page .iot-table td {
+  border-color: var(--edge);
+}
+
+.monitoring-page .iot-table th {
+  background: #1b2d43;
+}
