@@ -2,6 +2,14 @@
 
 Responsive, multi-page static website for LiftX Infra, built with HTML, CSS and vanilla JavaScript. It has no package manager, build step, server-side code, or database.
 
+## Current implementation status
+
+- Eight public HTML pages share navigation, LXI branding and footer behavior.
+- Six pages use the light-blue theme. Technology and Crane IoT Monitoring retain their original dark navy designs.
+- Technology content is aligned across the dropdown, Technology page, Services overview and Careers listings.
+- The 12-crane dashboard is an interactive browser simulation, not a connected fleet system.
+- Contact and job application actions open email drafts or WhatsApp; there is no submission backend.
+
 ## Project structure
 
 | File or folder | Purpose |
@@ -21,6 +29,8 @@ Responsive, multi-page static website for LiftX Infra, built with HTML, CSS and 
 | `script.js` | Shared navigation, dropdown, slideshow, client carousel, enquiry form and footer-year behavior |
 | `assets/` | Local service and supporting images used by site pages |
 | `assets/liftx-logo.png` | Supplied navy/gold LXI logo, cropped to remove excess white margins, used in the top-left header on all eight pages |
+| `assets/technology-network.svg` | Original decorative cloud/network artwork in the Technology menu |
+| `assets/crane-dashboard-reference.png` | Supplied dashboard reference image, displayed in an expandable monitoring section |
 | `images/` | Local crane and civil images used in the homepage hero slideshow |
 | `Clients/` | Client logo images used by the homepage client carousel |
 
@@ -28,22 +38,81 @@ Keep these paths and filenames in place when publishing: the HTML pages refer to
 
 ## Features and behavior
 
-- Shared responsive navigation links all eight pages, including Crane IoT Monitoring under Technology. On narrow screens, the menu opens from the menu button and closes when a link is selected.
-- The Technology navigation dropdown toggles by button, closes when clicking outside, and closes on Escape.
-- Its shared design follows the supplied mega-menu reference: a navy introduction sidebar with original local cloud/network artwork (`assets/technology-network.svg`), eight service categories with colored vector icons, and a pale-blue action bar linking monitoring and the Technology overview. Categories are Internet of Things (IoT), Managed IT Services, Cybersecurity, Cloud & Infrastructure, Software Development, Automation & Industry 4.0, Data & Analytics, and Networking & Connectivity. Each has six service descriptions (48 total), identical across all eight pages.
-- Wide desktop menus use a four-column/two-row service grid beside the sidebar. Smaller desktop screens use two service columns; on tablet the introduction stacks above two columns. Mobile uses scrollable navigation with one or two service columns. Desktop height is capped to the viewport, with all categories and footer actions reachable by scrolling. Menu action links use `#464feb` without underlines; existing site-wide links and tables are unchanged. Service lists remain informational rather than displaying misleading links. The existing LXI logo and LiftX Infra header branding remain unchanged.
-- The homepage hero slideshow uses the six local images in `images/`, advances every **2 seconds**, and has previous, next and numbered controls. Autoplay pauses while the page is hidden, while a control is hovered/focused, or when the visitor requests reduced motion.
-- The homepage client carousel displays multiple logos per row according to available width and advances every **5 seconds**. It pauses while hovered/focused or when the page is hidden, responds to resizing, and respects reduced-motion preferences.
-- Service links can open the Contact page with the selected service prefilled.
-- The Contact form validates required fields in the browser and prepares an email draft to `liftxinfra@gmail.com`. It does not send form data to a server.
-- Careers application links open an email draft or WhatsApp conversation using the published contact details.
-- Services includes a dedicated `#iot-technology` section with eight technology specialty cards linking to the matching Technology page anchors, plus a Crane IoT integration overview linking to the dashboard and Contact. It retains the five existing service cards and light-blue theme. The crane overview explicitly identifies the dashboard as simulated and live telemetry as requiring hardware and backend deployment.
-- Home, About, Services, Projects, Contact and Careers load `theme.css` last, after shared and page-specific styles. It supplies the light-blue canvas (`#eef6fd`), alternate blue sections (`#e2effb`), white cards and navy headings. Technology and Crane IoT Monitoring deliberately do not load this stylesheet: they retain their original dark navy backgrounds, panels, text, charts and notices. Keep photo overlays, status badges, primary buttons and the navy footer for contrast; simulation/live labels and behavior are unchanged.
-- Careers retains five crane/construction openings and adds nine technology career cards: one for each of the eight Technology service areas (covering all 48 service descriptions), plus Crane IoT integration engineering/field installation. Each card has responsibilities, relevant qualifications/skills and a role-specific email subject. Availability is discussed during recruitment. Applications can include a CV, specialization, certifications and project/portfolio links.
-- The Crane IoT career card describes planned OEM-approved, passive CAN/J1939 integration and field work; it explicitly labels the current 12-crane dashboard as a browser simulation without connected live telemetry. Keep this distinction accurate when updating recruitment content.
-- The footer copyright year is set by JavaScript.
-- The Technology page presents eight individually titled service sections, matching the eight menu categories and all 48 service descriptions. A quick-jump navigation links to each section, with responsive two-column service lists that stack on small screens. The IoT section retains the simulated crane dashboard link and explicitly notes that live gateway telemetry is not connected. Supporting AI workflow and cloud/data sections remain below.
-- Responsive layouts use CSS media queries. Slideshow and carousel animation respect the browser's `prefers-reduced-motion` setting.
+### Shared navigation and branding
+
+- Menu order: Home, About Us, Services, Projects, Crane IoT Monitoring, Technology, Contact, Careers, Get a Quote. Monitoring and Technology are immediately adjacent.
+- The former Clients menu entry was replaced by Crane IoT Monitoring; the homepage client carousel remains.
+- Every header places the supplied LXI image at the far-left edge, separate from the LiftX Infra name and tagline. Footer text branding remains unchanged.
+- Mobile navigation opens with the menu button and closes when a link is selected.
+- The Technology button opens an eight-category mega-menu. Outside click and Escape close it; Escape restores focus to the button.
+- The menu uses a navy introduction sidebar, local cloud/network artwork, colored vector icons and a pale-blue action bar linking monitoring and the Technology overview.
+- Wide desktop menus use four service columns/two rows beside the sidebar. Smaller desktops use two columns; tablets stack the introduction above two columns. Mobile uses one or two columns within scrollable navigation. The menu height is capped to the viewport.
+- Menu action links use `#464feb` without underlines. Service descriptions are informational text, not inactive links.
+- The footer year is set by `script.js`.
+
+### Color themes and stylesheet order
+
+| Pages | Theme |
+| --- | --- |
+| Home, About, Services, Projects, Contact, Careers | Light-blue canvas `#eef6fd`, alternate sections `#e2effb`, white cards and navy headings |
+| Technology | Original dark navy sections, white text and gold accents |
+| Crane IoT master and individual views | Original dark monitoring panels, green/gold chart accents and clearly labeled demo notices |
+
+Load `style.css` and `technology-menu.css` on every page. Load `theme.css` last on the six light-themed pages, after inline page styles. Do not add it to `technology.html` or `crane-monitoring.html`; their dark themes are intentional. Monitoring also loads `crane-monitoring.css`.
+
+Photo overlays, primary buttons, status badges and the navy footer retain contrasting colors. Responsive layouts use CSS media queries; carousel animation respects `prefers-reduced-motion`.
+
+### Homepage, About and Projects
+
+- The homepage hero rotates six local images every **2 seconds**, with previous, next and numbered controls. The first image is `images/100 Ton&500 Ton.png`; the remaining slides are `Civil1.png`, `Civil2.png`, `Civil3.png`, `Crane.jpg` and `Hydra crane.jpg` in the same folder. HTML URLs encode spaces and special characters.
+- Hero autoplay pauses when the page is hidden or its controls are hovered/focused, and does not autoplay for reduced-motion visitors.
+- The client carousel contains **17 local logos**, displays multiple logos per row and advances every **5 seconds**. It pauses on hover/focus or hidden pages and responds to resizing and reduced-motion preferences.
+- About is a separate page with company background, core values, founder Mr. Amarnath Rai and a prominent GSTIN card showing exactly `07BRGPR7548C2ZI`.
+- Projects presents six portfolio/capability cards. Review project descriptions, imagery and claims before publication.
+
+### Technology and Services
+
+The Technology page has eight individually headed sections with six service descriptions each (**48 total**), matching all eight copies of the shared mega-menu:
+
+| Category | Technology page anchor |
+| --- | --- |
+| Internet of Things (IoT) | `technology.html#iot` |
+| Managed IT Services | `technology.html#managed-it` |
+| Cybersecurity | `technology.html#cybersecurity` |
+| Cloud & Infrastructure | `technology.html#cloud-infrastructure` |
+| Software Development | `technology.html#software-development` |
+| Automation & Industry 4.0 | `technology.html#automation` |
+| Data & Analytics | `technology.html#data-analytics` |
+| Networking & Connectivity | `technology.html#networking` |
+
+- Quick-jump links navigate to each Technology section. Two-column service lists stack on small screens.
+- The IoT section links to the simulated fleet dashboard and states that real gateway telemetry is not connected. AI workflow, cloud/data and Looking Ahead sections remain below.
+- Services retains five original cards: Crane Services, JCB Services, Civil Works, Real Estate and AI & Technology Base Solutions.
+- Its dedicated `#iot-technology` section adds eight technology specialty cards linking to the matching anchors above, plus a Crane IoT Monitoring & Integration overview.
+- The crane overview covers planned passive CAN/J1939, sensors, LTE/GNSS gateways, dashboards and diagnostics. It links to the demo and Contact and explicitly distinguishes simulation from a live deployment.
+
+### Careers and applications
+
+- Five original openings remain: Crane Operator, JCB Operator, Civil Engineer, Civil Workers and Supervisor.
+- `careers.html#technology-careers` contains nine further cards: IoT & Embedded Systems Engineer; IT Support & Systems Engineer; Cybersecurity Analyst / Security Engineer; Cloud & DevOps Engineer; Software Developer / UI/UX Designer; Industrial Automation Engineer; Data Engineer / BI & AI Analyst; Network & Connectivity Engineer; and Crane IoT Integration Engineer / Field Technician.
+- These cover all eight Technology categories and their 48 service descriptions, plus Crane IoT field integration. Each card includes responsibilities, relevant requirements/skills and a distinct application email subject: **14 career cards total**.
+- Applications open an email draft or WhatsApp. Candidates can supply their CV, specialization, experience, location, certificates and portfolio/project links. No CV upload or applicant-tracking system exists.
+- Benefits and application contacts are shared below the listings; role availability and assignments are discussed during recruitment.
+- The Crane IoT listing describes planned OEM-approved, passive integration, not an existing live installation. It retains the simulation disclaimer and read-only safety requirements.
+
+### Contact details and form limitations
+
+| Item | Published value |
+| --- | --- |
+| Email | `liftxinfra@gmail.com` |
+| Phone / WhatsApp | `+91 83696 49443` |
+| WhatsApp destination | `https://wa.me/918369649443` |
+| Office | D-27/1, Block, Gurunanak Dev Colony, Bhalswa Dairy, Delhi - 110042 |
+| GSTIN | `07BRGPR7548C2ZI` |
+
+- Existing service-specific links use `contact.html?service=...` to prefill a matching service option. The new general IoT enquiry link opens Contact without a preselection; visitors can select AI & Technology Base Solutions or describe their requirements.
+- The form validates required fields in the browser and prepares an email draft. It does not send data to a server, store enquiries or confirm delivery.
+- Email actions require a configured email handler. WhatsApp and the embedded map require their external services. A production submission service would need separate implementation and privacy handling.
 
 ## Run locally
 
@@ -56,13 +125,15 @@ No dependencies need to be installed. Google Fonts, Unsplash images used on some
 ## Updating the site
 
 - **Navigation:** Update the shared `<nav>` in each HTML page when adding or renaming a page.
-- The primary navigation's former Clients link is now Crane IoT Monitoring on all eight pages. Crane IoT Monitoring sits immediately before Technology, with Projects before both items. The homepage client carousel remains in place; monitoring is also accessible through Technology.
+- **Technology taxonomy:** Keep the eight menu copies, Technology headings/lists, Services summary links and Careers service coverage synchronized. Preserve the existing anchor IDs or update all incoming links together.
+- **Themes:** Change shared light-blue colors in `theme.css`; change Technology's inline styles or `crane-monitoring.css` for dark-page styling. Avoid global overrides that recolor the two dark pages.
 - **Header logo:** All eight page headers position `assets/liftx-logo.png` at the far-left edge, separately from the LiftX Infra name and tagline, while retaining the same home link. Shared `.site-header .brand-logo` and `.brand-text` rules in `style.css` reserve space to prevent overlap at desktop/mobile sizes. Footer text branding is unchanged.
 - **Homepage hero:** Keep the `.hero-slide` images and `[data-slide-to]` buttons in `index.html` in the same order and count. Change the autoplay interval in `script.js` if the timing should change.
 - **Client logos:** Add or replace images in `Clients/` and update the client-slide markup in `index.html` as needed. The carousel timing is configured in `script.js`.
 - **Contact details:** Keep the business email, phone, WhatsApp link, website and office address consistent across `contact.html` and `careers.html`. Check other pages before changing business-wide contact information.
 - **Images:** Use local, web-optimized files where possible. Update the corresponding relative image paths in HTML/CSS whenever a file is renamed or moved.
 - **Enquiry form:** Its current `mailto:` behavior depends on a configured email application. For reliable production submissions, connect a secure form provider or backend and document its handling of personal data.
+- **Careers:** Confirm hiring availability before publishing. Keep role-specific email subjects, requirements, application guidance and Crane IoT demo/safety statements accurate.
 
 ## Validation
 
@@ -74,10 +145,15 @@ There is no configured automated test or build command. Before publishing, check
 4. The Technology dropdown, service-to-contact links, email links, WhatsApp links and map behave as intended.
 5. The contact information, GSTIN, job details and company claims are approved and correct.
 6. The site is usable by keyboard and with reduced-motion preferences enabled.
+7. Technology has eight sections/48 items; Services has eight linked technology summaries and a crane integration section; Careers has five original and nine technology/IoT cards with working application links.
+8. The six light pages retain their blue backgrounds, while both the Technology page and all monitoring views retain dark colors and readable text.
+9. Check desktop/tablet/mobile widths, including 1440, 768, 375 and 320 pixels, for overflow and reachable menus. Check all eight quick-jump targets.
+
+Run `git diff --check` for patch whitespace errors. Browser checks and lightweight HTML/reference checks have been used during development; they are not a committed automated regression suite.
 
 ## Crane IoT monitoring
 
-Open Technology > Crane IoT Monitoring, or follow the link on the Technology page's Monitoring card.
+Open the primary Crane IoT Monitoring link, the Technology menu action, the Technology page's IoT section or the Services page's crane demo link.
 
 ### Implemented website functionality
 
@@ -89,7 +165,7 @@ Open Technology > Crane IoT Monitoring, or follow the link on the Technology pag
 - Start demo generates samples every 2 seconds; Pause freezes them; Reset restores the selected asset's initial values and clears its chart and events. Opening a different asset starts fresh and does not carry readings or test alerts across cranes.
 - The sample fleet covers ACE Hydra, Escorts Kubota / Farana, TIL and Manitowoc as illustrative examples, not validated model integrations. Each asset has a sample gateway ID and distinct synthetic baseline readings; these are not manufacturer specifications.
 - Operating examples vary; idle examples remain unloaded; maintenance examples have their simulated engine stopped. Offline examples show unavailable readings, hide their gauges and disable Start, rather than presenting missing data as zero or healthy. All actual gateway connectivity and ECU diagnostics remain unconnected/unavailable, even for the demo's online scenarios.
-- Adjust `fleetDefinitions` in `crane-monitoring.js` to change sample fleet size, model assignments or scenarios. IDs, sample gateways, cards, selector options and status totals are derived from this list. Update the introductory example count and Technology card text if changing fleet size. Real inventory and telemetry require the separate authenticated backend described below.
+- Adjust `fleetDefinitions` in `crane-monitoring.js` to change sample fleet size, model assignments or scenarios. IDs, sample gateways, cards, selector options and status totals are derived from this list. Update hard-coded fleet counts in the monitoring, Technology, Services and Careers pages and this README together. Real inventory and telemetry require the separate authenticated backend described below.
 - The trend keeps the last 30 samples. Pressure and load use independent normalized display scales (250 bar and 5 t), not capacity or safety limits.
 - Test alert adds a clearly marked local test event; Clear demo alerts only clears the browser's demo log. No notification or machine command is sent. The most recent 10 test events are shown.
 - The simulation does not auto-start and pauses when the page is hidden. Nothing is persisted after refresh. No sensor data or location is collected by this simulator.
