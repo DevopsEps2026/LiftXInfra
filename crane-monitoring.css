@@ -1,0 +1,149 @@
+.monitoring-page main {
+  --panel: #142133;
+  --edge: #34475e;
+  --muted-iot: #adbed2;
+  --mint: #59e4bd;
+  background: #0b1321;
+  color: #edf4fc;
+}
+.monitoring-shell {
+  padding-top: 44px;
+  padding-bottom: 60px;
+}
+.monitoring-page h1,
+.monitoring-page main h2,
+.monitoring-page main h3 {
+  color: #edf4fc;
+  line-height: 1.3;
+}
+.monitoring-page h1 {
+  margin: 8px 0 16px;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -1.2px;
+}
+.monitoring-page main h2 { font-size: 19px; margin: 0 0 12px; }
+.monitoring-page main h3 { font-size: 15px; margin: 0 0 10px; }
+.monitoring-page main p { color: var(--muted-iot); }
+.monitoring-page main a:not(.button) { color: var(--mint); text-decoration: underline; text-underline-offset: 3px; }
+.monitoring-page main button,
+.monitoring-page main input,
+.monitoring-page main select {
+  padding: 10px 13px;
+  border: 1px solid #61758e;
+  border-radius: 5px;
+  background: #1b2d43;
+  color: #edf4fc;
+  font: inherit;
+  font-size: 12px;
+}
+.monitoring-page main button { cursor: pointer; }
+.monitoring-page main button:disabled { cursor: default; opacity: .5; }
+.monitoring-page main button:focus-visible,
+.monitoring-page main input:focus-visible,
+.monitoring-page main select:focus-visible,
+.monitoring-page main summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+.monitoring-page #start-demo { background: #135c50; border-color: var(--mint); }
+.iot-eyebrow { margin: 0; color: var(--yellow) !important; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+.iot-intro { max-width: 850px; font-size: 14px; }
+.demo-notice {
+  margin: 24px 0;
+  padding: 17px 20px;
+  border: 1px solid #967b36;
+  border-left: 4px solid var(--yellow);
+  border-radius: 6px;
+  background: #302a1c;
+  color: #ffe3a2;
+  font-size: 13px;
+}
+.demo-notice strong { color: #ffe3a2; }
+.iot-panel { padding: 22px; border: 1px solid var(--edge); border-radius: 9px; background: var(--panel); }
+.equipment-header,
+.panel-title,
+.equipment-meta { display: flex; justify-content: space-between; align-items: start; gap: 16px; flex-wrap: wrap; }
+.equipment-header h2 { margin: 6px 0 !important; }
+.equipment-header p,
+.panel-title p { margin: 4px 0; font-size: 12px; }
+.equipment-select { display: grid; gap: 7px; font-size: 11px; color: var(--muted-iot); }
+.badge { display: inline-block; border-radius: 4px; padding: 4px 7px; background: #2f3541; color: #ffdd82; font-size: 10px; font-weight: 800; letter-spacing: .5px; }
+.badge-mint { background: #173f39; color: var(--mint); }
+.equipment-meta { margin-top: 18px; align-items: center; font-size: 12px; color: var(--muted-iot); }
+.demo-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.metrics-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
+.metric { padding: 18px; }
+.metric h3 { font-size: 11px !important; text-transform: uppercase; letter-spacing: .7px; color: var(--muted-iot) !important; }
+.metric strong { display: block; margin: 10px 0 0; font-size: 29px; line-height: 1.2; }
+.metric strong small { font-size: 13px; color: var(--muted-iot); }
+.metric p { margin: 4px 0 9px; font-size: 11px; }
+.metric meter { width: 100%; height: 9px; accent-color: var(--mint); }
+.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.reading-list { margin: 0; }
+.reading-list > div { display: flex; justify-content: space-between; gap: 18px; border-bottom: 1px solid #2a3b50; padding: 13px 0; }
+.reading-list > div:last-child { border: 0; }
+.reading-list dt { font-size: 12px; }
+.reading-list dt small { display: block; color: var(--muted-iot); font-size: 10px; }
+.reading-list dd { margin: 0; text-align: right; color: var(--mint); font-size: 13px; font-weight: 700; }
+.trend { width: 100%; height: auto; margin-top: 12px; }
+.trend-grid { stroke: #34475e; stroke-width: 1; }
+.trend text { fill: #adbed2; font-size: 11px; }
+.trend polyline { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+.trend-pressure { stroke: var(--mint); }
+.trend-load { stroke: var(--yellow); }
+.trend-key { display: flex; gap: 20px; font-size: 11px; margin: 6px 0 15px; color: var(--muted-iot); }
+.trend-key span:first-child { color: var(--mint); }
+.trend-key span:last-child { color: var(--yellow); }
+.health-list { list-style: none; padding: 0; margin: 0; }
+.health-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid #2a3b50; font-size: 12px; }
+.health-list li:last-child { border: 0; }
+.iot-small { font-size: 11px; line-height: 1.8; }
+.event-list { padding-left: 18px; max-height: 190px; overflow-y: auto; font-size: 12px; color: #ffdd82; }
+.event-list li { margin: 10px 0; }
+.iot-section { margin-top: 32px; scroll-margin-top: 110px; }
+.iot-section > p { font-size: 13px; }
+.architecture-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+.architecture-grid p,
+.architecture-grid li { color: var(--muted-iot); font-size: 12px; line-height: 1.85; }
+.architecture-grid ul { padding-left: 18px; margin-bottom: 0; }
+.iot-step { display: block; color: var(--yellow); margin-bottom: 8px; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
+.data-flow { padding: 20px; border: 1px dashed #61758e; border-radius: 7px; font-size: 13px; line-height: 2; color: var(--mint); }
+.table-scroll { overflow-x: auto; }
+.iot-table { width: 100%; min-width: 650px; border-collapse: collapse; font-size: 12px; }
+.iot-table th,
+.iot-table td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--edge); padding: 14px; }
+.iot-table th { background: #1b2d43; color: #fff; }
+.iot-table td { color: var(--muted-iot); }
+.deployment-list { display: grid; gap: 16px; padding-left: 24px; }
+.deployment-list li { padding-left: 8px; font-size: 13px; color: var(--muted-iot); line-height: 1.85; }
+.deployment-list strong { color: #edf4fc; }
+.iot-code { padding: 18px; border-radius: 6px; background: #0b1321; font-size: 12px; overflow-x: auto; color: #bdeadd; }
+.reference-image { display: block; width: min(100%, 338px); height: auto; margin: 20px auto 0; }
+.monitoring-page summary { cursor: pointer; font-size: 14px; color: var(--mint); }
+.monitoring-page [hidden] { display: none !important; }
+.fleet-summary { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+.fleet-summary span { padding: 10px 14px; border: 1px solid var(--edge); border-radius: 6px; font-size: 12px; }
+.fleet-tools { display: flex; align-items: end; gap: 16px; flex-wrap: wrap; }
+.fleet-tools label { display: grid; gap: 7px; flex: 1 1 180px; color: var(--muted-iot); font-size: 12px; }
+.fleet-tools label:first-child { flex-grow: 2; }
+.fleet-tools input { width: 100%; min-width: 0; }
+.fleet-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.fleet-card h3 { font-size: 21px !important; }
+.fleet-card p { font-size: 12px; }
+.fleet-card > a { font-size: 12px; }
+.fleet-card .panel-title { align-items: center; gap: 8px; }
+.fleet-card h3 { margin: 0 !important; }
+.badge[data-state="Operating"] { background: #173f39; color: #59e4bd; }
+.badge[data-state="Idle"] { background: #233f5c; color: #b7daff; }
+.badge[data-state="Maintenance"] { background: #49351d; color: #ffdd82; }
+.badge[data-state="Offline"] { background: #422d3a; color: #ffc5cf; }
+@media (max-width: 850px) {
+  .fleet-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .architecture-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 650px) {
+  .fleet-grid { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .iot-panel { padding: 17px; }
+  .equipment-select,
+  .equipment-select select { width: 100%; min-width: 0; }
+  .metric strong { font-size: 24px; }
+}

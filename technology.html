@@ -105,47 +105,103 @@
       font-size: 12px;
       line-height: 1.8;
     }
-    .technology-page .capability-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+    .technology-page .technology-jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 0 0 32px;
     }
-    .technology-page .capability-card {
-      min-height: 230px;
-      padding: 21px 18px;
-      border: 1px solid #ffffff0c;
-      border-radius: 8px;
-      background: #0d3459;
+    .technology-page .technology-jump-links a {
+      padding: 10px 14px;
+      border: 1px solid #38536d;
+      border-radius: 6px;
+      background: #0b2b49;
+      color: #dce9f5;
+      font-size: 12px;
     }
-    .technology-page .capability-icon {
-      display: block;
-      margin-bottom: 14px;
+    .technology-page .technology-jump-links a:hover {
+      border-color: var(--yellow);
       color: var(--yellow);
-      font-size: 23px;
-      line-height: 1;
     }
-    .technology-page .capability-card h3 {
-      margin: 0 0 8px;
-      color: #fff;
-      font-size: 14px;
-    }
-    .technology-page .capability-card p {
-      min-height: 56px;
-      margin: 0 0 12px;
-      color: #d0dce8;
-      font-size: 10px;
-      line-height: 1.7;
-    }
-    .technology-page .capability-card ul {
+    .technology-page .technology-service-section {
       display: grid;
-      gap: 6px;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr);
+      gap: 38px;
+      margin-top: 20px;
+      padding: 34px;
+      border: 1px solid #284964;
+      border-radius: 14px;
+      background: linear-gradient(120deg, #103454, #0a2946);
+      scroll-margin-top: 110px;
+    }
+    .technology-page .technology-service-section:nth-of-type(even) {
+      background: linear-gradient(120deg, #0c2946, #103454);
+    }
+    .technology-page .technology-service-number {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 9px;
+      border: 1px solid #6a6540;
+      border-radius: 5px;
+      color: var(--yellow);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .technology-page .technology-service-section h2 {
+      margin: 0 0 13px;
+      color: #fff;
+      font-size: clamp(22px, 2.5vw, 29px);
+      letter-spacing: -.6px;
+      line-height: 1.25;
+    }
+    .technology-page .technology-service-section p {
       margin: 0;
-      padding: 11px 0 0;
-      border-top: 1px solid #ffffff16;
-      color: #bccbd9;
-      font-size: 9px;
-      line-height: 1.5;
+      color: #c3d3e2;
+      font-size: 13px;
+      line-height: 1.85;
+    }
+    .technology-page .technology-service-section ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-content: center;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
       list-style: none;
+    }
+    .technology-page .technology-service-section li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid #34516b;
+      border-radius: 7px;
+      background: #061d3359;
+      color: #e0ebf5;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .technology-page .technology-service-section li::before {
+      content: "";
+      flex: 0 0 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+    .technology-page .technology-service-section .iot-demo-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .technology-page .technology-jump-links a:focus-visible,
+    .technology-page .iot-demo-link:focus-visible {
+      outline: 2px solid var(--yellow);
+      outline-offset: 4px;
     }
     .technology-page .agentic-section {
       padding: 67px 0 72px;
@@ -229,8 +285,9 @@
         grid-template-columns: 1fr 1fr;
         gap: 32px;
       }
-      .technology-page .capability-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .technology-page .technology-service-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
       }
     }
     @media (max-width: 720px) {
@@ -250,25 +307,36 @@
         grid-template-columns: 1fr;
       }
     }
+    @media (max-width: 480px) {
+      .technology-page .technology-service-section {
+        padding: 24px 20px;
+      }
+      .technology-page .technology-service-section ul {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body class="technology-page">
   <header class="site-header">
-    <a class="brand" href="index.html#home" aria-label="LiftX Infra home"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></a>
+    <a class="brand" href="index.html#home" aria-label="LiftX Infra home"><img class="brand-logo" src="assets/liftx-logo.png" alt="LiftX Infra" width="1175" height="480"><span class="brand-text"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></span></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav class="nav">
       <a href="index.html#home">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a>
-      <a href="index.html#clients">Clients</a><a href="projects.html">Projects</a>
+      <a href="projects.html">Projects</a><a href="crane-monitoring.html">Crane IoT Monitoring</a>
       <div class="technology-nav-item">
         <button class="technology-menu-toggle" type="button" aria-expanded="false" aria-controls="technologyDropdown" aria-current="page">Technology <span class="technology-menu-chevron" aria-hidden="true">▾</span></button>
         <div class="technology-dropdown" id="technologyDropdown" hidden>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">▣</span>Managed IT Services</h2><ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♢</span>Cybersecurity</h2><ul><li>MSSP</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">&lt;/&gt;</span>Software Development</h2><ul><li>Web Apps</li><li>Mobile Apps</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">☁</span>Cloud &amp; Infrastructure</h2><ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Data Centers</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♧</span>IT Consulting</h2><ul><li>Digital Transformation</li><li>IT Strategy</li><li>BI &amp; Analytics</li><li>ERP &amp; CRM</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♙</span>IT Staffing &amp; Training</h2><ul><li>Staff Augmentation</li><li>IT Recruitment</li><li>Training &amp; Certification</li><li>Outsourcing</li></ul></section>
-          <div class="technology-menu-footer"><a href="technology.html">Explore Technology <span aria-hidden="true">→</span></a></div>
+          <div class="technology-menu-intro"><span>Technology</span><strong>Smarter Infrastructure <em>with Technology</em></strong><p>We bring together modern IT, IoT and data insights to support safer, smarter and more efficient infrastructure.</p></div>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Internet of Things (IoT)</h2><ul><li>Industrial IoT (IIoT)</li><li>IoT Device Integration</li><li>Sensor &amp; Data Analytics</li><li>Real-time Monitoring</li><li>Edge Computing</li><li>IoT Platforms &amp; Dashboards</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Managed IT Services</h2><ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li><li>Endpoint Management</li><li>IT Infrastructure</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Cybersecurity</h2><ul><li>MSSP (Managed Security)</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li><li>Security Monitoring (SOC)</li><li>Compliance &amp; Risk Management</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Cloud &amp; Infrastructure</h2><ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Containerization (Docker, Kubernetes)</li><li>Data Centers</li><li>Hybrid &amp; Multi-Cloud</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Software Development</h2><ul><li>Web Applications</li><li>Mobile Applications</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li><li>API Development</li><li>UI/UX Design</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Automation &amp; Industry 4.0</h2><ul><li>Industrial Automation</li><li>SCADA &amp; Control Systems</li><li>Predictive Maintenance</li><li>Digital Twins</li><li>Robotics Integration</li><li>Smart Manufacturing</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Data &amp; Analytics</h2><ul><li>Big Data Solutions</li><li>Business Intelligence</li><li>Data Visualization</li><li>AI/ML Solutions</li><li>Data Lake &amp; Warehousing</li><li>Analytics for Operations</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Networking &amp; Connectivity</h2><ul><li>5G &amp; Private Networks</li><li>Industrial Networking</li><li>Wireless Solutions</li><li>SD-WAN</li><li>IoT Connectivity (LTE, LoRa, NB-IoT)</li><li>Network Design &amp; Optimization</li></ul></section>
+          <div class="technology-menu-footer"><a href="crane-monitoring.html">Crane IoT Monitoring <span aria-hidden="true">→</span></a><p>From cloud to AI — building what's next.</p><a href="technology.html">Explore All Technology <span aria-hidden="true">→</span></a></div>
         </div>
       </div>
       <a href="contact.html">Contact</a>
@@ -299,47 +367,44 @@
       <div class="container">
         <div class="tech-section-heading">
           <p class="tech-eyebrow">WHAT WE DO</p>
-          <h2 id="capabilities-heading">Six capabilities, one connected stack.</h2>
-          <p>From the first digital process to AI-enabled operations, each layer builds on the one beneath it.</p>
+          <h2 id="capabilities-heading">Eight specialties. One connected technology partner.</h2>
+          <p>Explore eight dedicated service areas, from connected industrial devices to secure networks, software and data-driven operations.</p>
         </div>
-        <div class="capability-grid">
-          <article class="capability-card">
-            <span class="capability-icon" aria-hidden="true">▣</span>
-            <h3>IT Solutions</h3>
-            <p>Custom software, workflow automation and secure systems for project teams.</p>
-            <ul><li>Project &amp; asset portals</li><li>Digital reporting</li><li>System integration</li></ul>
-          </article>
-          <article class="capability-card">
-            <span class="capability-icon" aria-hidden="true">✳</span>
-            <h3>Agentic AI</h3>
-            <p>AI agents that read data, reason over it and take approved actions.</p>
-            <ul><li>Workflow agents</li><li>Document &amp; report copilots</li><li>Monitoring concepts</li></ul>
-          </article>
-          <article class="capability-card">
-            <span class="capability-icon" aria-hidden="true">☁</span>
-            <h3>Cloud</h3>
-            <p>Secure, scalable platforms and migrations on modern cloud services.</p>
-            <ul><li>Cloud architecture</li><li>Database migration</li><li>Cost &amp; security review</li></ul>
-          </article>
-          <article class="capability-card">
-            <span class="capability-icon" aria-hidden="true">▥</span>
-            <h3>Data Analytics</h3>
-            <p>Dashboards and models that turn site and business data into decisions.</p>
-            <ul><li>BI dashboards</li><li>Data pipelines</li><li>Forecasting &amp; KPIs</li></ul>
-          </article>
-          <article class="capability-card">
-            <span class="capability-icon" aria-hidden="true">◷</span>
-            <h3>Monitoring</h3>
-            <p>Live visibility into site activity, equipment status and project progress.</p>
-            <ul><li>Equipment status</li><li>Site progress tracking</li><li>Alerts &amp; reporting</li></ul>
-          </article>
-          <article class="capability-card">
-            <span class="capability-icon" aria-hidden="true">&lt;/&gt;</span>
-            <h3>Software Development &amp; Reporting</h3>
-            <p>Purpose-built digital tools and clear reports to support day-to-day decisions.</p>
-            <ul><li>Custom applications</li><li>Automated reports</li><li>Project dashboards</li></ul>
-          </article>
-        </div>
+        <nav class="technology-jump-links" aria-label="Technology service areas">
+          <a href="#iot">Internet of Things</a><a href="#managed-it">Managed IT Services</a><a href="#cybersecurity">Cybersecurity</a><a href="#cloud-infrastructure">Cloud &amp; Infrastructure</a><a href="#software-development">Software Development</a><a href="#automation">Automation &amp; Industry 4.0</a><a href="#data-analytics">Data &amp; Analytics</a><a href="#networking">Networking &amp; Connectivity</a>
+        </nav>
+        <section class="technology-service-section" id="iot" aria-labelledby="iot-heading">
+          <div><span class="technology-service-number">01 / CONNECT</span><h2 id="iot-heading">Internet of Things (IoT)</h2><p>Connect industrial equipment, sensors and edge systems to turn operational signals into useful dashboards and timely insights.</p><a class="iot-demo-link" href="crane-monitoring.html">Open 12-Crane Master Dashboard &amp; Demo →</a><p><small>Browser simulation only; real gateway telemetry is not connected.</small></p></div>
+          <ul><li>Industrial IoT (IIoT)</li><li>IoT Device Integration</li><li>Sensor &amp; Data Analytics</li><li>Real-time Monitoring</li><li>Edge Computing</li><li>IoT Platforms &amp; Dashboards</li></ul>
+        </section>
+        <section class="technology-service-section" id="managed-it" aria-labelledby="managed-it-heading">
+          <div><span class="technology-service-number">02 / SUPPORT</span><h2 id="managed-it-heading">Managed IT Services</h2><p>Keep teams productive with coordinated support, dependable infrastructure and a practical approach to service continuity.</p></div>
+          <ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li><li>Endpoint Management</li><li>IT Infrastructure</li></ul>
+        </section>
+        <section class="technology-service-section" id="cybersecurity" aria-labelledby="cybersecurity-heading">
+          <div><span class="technology-service-number">03 / PROTECT</span><h2 id="cybersecurity-heading">Cybersecurity</h2><p>Build a risk-aware security approach through authorized assessments, monitoring, protective controls and compliance planning.</p></div>
+          <ul><li>MSSP (Managed Security)</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li><li>Security Monitoring (SOC)</li><li>Compliance &amp; Risk Management</li></ul>
+        </section>
+        <section class="technology-service-section" id="cloud-infrastructure" aria-labelledby="cloud-infrastructure-heading">
+          <div><span class="technology-service-number">04 / SCALE</span><h2 id="cloud-infrastructure-heading">Cloud &amp; Infrastructure</h2><p>Plan and modernize cloud environments with the right foundations for reliability, deployment automation and future growth.</p></div>
+          <ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Containerization (Docker, Kubernetes)</li><li>Data Centers</li><li>Hybrid &amp; Multi-Cloud</li></ul>
+        </section>
+        <section class="technology-service-section" id="software-development" aria-labelledby="software-development-heading">
+          <div><span class="technology-service-number">05 / BUILD</span><h2 id="software-development-heading">Software Development</h2><p>Create useful digital products and integrations, with clear user experiences and workflows designed around your business.</p></div>
+          <ul><li>Web Applications</li><li>Mobile Applications</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li><li>API Development</li><li>UI/UX Design</li></ul>
+        </section>
+        <section class="technology-service-section" id="automation" aria-labelledby="automation-heading">
+          <div><span class="technology-service-number">06 / MODERNIZE</span><h2 id="automation-heading">Automation &amp; Industry 4.0</h2><p>Explore connected manufacturing and operational automation, with engineering validation and people in control of critical systems.</p></div>
+          <ul><li>Industrial Automation</li><li>SCADA &amp; Control Systems</li><li>Predictive Maintenance</li><li>Digital Twins</li><li>Robotics Integration</li><li>Smart Manufacturing</li></ul>
+        </section>
+        <section class="technology-service-section" id="data-analytics" aria-labelledby="data-analytics-heading">
+          <div><span class="technology-service-number">07 / UNDERSTAND</span><h2 id="data-analytics-heading">Data &amp; Analytics</h2><p>Bring operational and business data together to improve visibility, support reporting and inform better decisions.</p></div>
+          <ul><li>Big Data Solutions</li><li>Business Intelligence</li><li>Data Visualization</li><li>AI/ML Solutions</li><li>Data Lake &amp; Warehousing</li><li>Analytics for Operations</li></ul>
+        </section>
+        <section class="technology-service-section" id="networking" aria-labelledby="networking-heading">
+          <div><span class="technology-service-number">08 / ENABLE</span><h2 id="networking-heading">Networking &amp; Connectivity</h2><p>Design dependable connections between sites, devices and cloud platforms, matched to coverage, performance and operational needs.</p></div>
+          <ul><li>5G &amp; Private Networks</li><li>Industrial Networking</li><li>Wireless Solutions</li><li>SD-WAN</li><li>IoT Connectivity (LTE, LoRa, NB-IoT)</li><li>Network Design &amp; Optimization</li></ul>
+        </section>
       </div>
     </section>
 

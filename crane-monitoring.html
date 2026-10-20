@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LiftX Infra crane IoT monitoring: interactive simulated dashboard and a read-only CAN/J1939 fleet implementation design.">
+  <title>Crane IoT Monitoring | LiftX Infra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="technology-menu.css">
+  <link rel="stylesheet" href="crane-monitoring.css">
+</head>
+<body class="monitoring-page" id="top">
+  <header class="site-header">
+    <a class="brand" href="index.html#home" aria-label="LiftX Infra home"><img class="brand-logo" src="assets/liftx-logo.png" alt="LiftX Infra" width="1175" height="480"><span class="brand-text"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav">
+      <a href="index.html#home">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a>
+      <a href="projects.html">Projects</a><a href="crane-monitoring.html" aria-current="page">Crane IoT Monitoring</a>
+      <div class="technology-nav-item">
+        <button class="technology-menu-toggle" type="button" aria-expanded="false" aria-controls="technologyDropdown">Technology <span class="technology-menu-chevron" aria-hidden="true">▾</span></button>
+        <div class="technology-dropdown" id="technologyDropdown" hidden>
+          <div class="technology-menu-intro"><span>Technology</span><strong>Smarter Infrastructure <em>with Technology</em></strong><p>We bring together modern IT, IoT and data insights to support safer, smarter and more efficient infrastructure.</p></div>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Internet of Things (IoT)</h2><ul><li>Industrial IoT (IIoT)</li><li>IoT Device Integration</li><li>Sensor &amp; Data Analytics</li><li>Real-time Monitoring</li><li>Edge Computing</li><li>IoT Platforms &amp; Dashboards</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Managed IT Services</h2><ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li><li>Endpoint Management</li><li>IT Infrastructure</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Cybersecurity</h2><ul><li>MSSP (Managed Security)</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li><li>Security Monitoring (SOC)</li><li>Compliance &amp; Risk Management</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Cloud &amp; Infrastructure</h2><ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Containerization (Docker, Kubernetes)</li><li>Data Centers</li><li>Hybrid &amp; Multi-Cloud</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Software Development</h2><ul><li>Web Applications</li><li>Mobile Applications</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li><li>API Development</li><li>UI/UX Design</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Automation &amp; Industry 4.0</h2><ul><li>Industrial Automation</li><li>SCADA &amp; Control Systems</li><li>Predictive Maintenance</li><li>Digital Twins</li><li>Robotics Integration</li><li>Smart Manufacturing</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Data &amp; Analytics</h2><ul><li>Big Data Solutions</li><li>Business Intelligence</li><li>Data Visualization</li><li>AI/ML Solutions</li><li>Data Lake &amp; Warehousing</li><li>Analytics for Operations</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Networking &amp; Connectivity</h2><ul><li>5G &amp; Private Networks</li><li>Industrial Networking</li><li>Wireless Solutions</li><li>SD-WAN</li><li>IoT Connectivity (LTE, LoRa, NB-IoT)</li><li>Network Design &amp; Optimization</li></ul></section>
+          <div class="technology-menu-footer"><a href="crane-monitoring.html" aria-current="page">Crane IoT Monitoring <span aria-hidden="true">→</span></a><p>From cloud to AI — building what's next.</p><a href="technology.html">Explore All Technology <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a><a href="careers.html">Careers</a>
+      <a class="nav-cta" href="contact.html">Get a Quote <span>↗</span></a>
+    </nav>
+  </header>
+  <main>
+    <div class="container monitoring-shell">
+      <p class="iot-eyebrow">TECHNOLOGY / CRANE IOT MONITORING</p>
+      <h1>Your fleet. One monitoring view.</h1>
+      <p class="iot-intro">A 12-crane example fleet with individual monitoring views for ACE Hydra, Escorts Kubota / Farana, TIL and Manitowoc. Sample IDs and statuses are illustrative; the fleet can be adjusted to your actual inventory. Model names identify the intended survey scope, not verified integrations.</p>
+      <div class="demo-notice"><strong>DEMO DATA ONLY — NO LIVE CRANE CONNECTED.</strong> Every value, chart point, condition label and event below is simulated in your browser. Live readings: unavailable. This is a monitoring prototype, not a certified load-moment indicator, safe-load indicator or crane control system.</div>
+      <p class="iot-small"><a href="#architecture">Sensor &amp; gateway design</a> · <a href="#signal-map">Signal availability</a> · <a href="#integration">Dashboard integration</a> · <a href="#deployment">Deployment plan</a></p>
+
+      <p id="fleet-error" class="demo-notice" role="alert" hidden></p>
+      <section id="fleet" aria-labelledby="fleet-title">
+        <div class="panel-title"><div><p class="iot-eyebrow">SIMULATED FLEET / NO LIVE GATEWAYS</p><h2 id="fleet-title">Master Dashboard</h2></div><span id="fleet-size" class="badge">12 SAMPLE CRANES</span></div>
+        <p class="iot-small">Select a crane ID to open its dedicated monitoring page. Status indicators describe demo scenarios, not actual equipment availability. All real gateways are not connected.</p>
+        <div id="fleet-summary" class="fleet-summary" aria-label="Simulated fleet status totals"></div>
+        <div class="fleet-tools iot-panel">
+          <label for="fleet-search">Search sample fleet
+            <input id="fleet-search" type="search" placeholder="Crane ID, manufacturer, gateway or status" autocomplete="off">
+          </label>
+          <label for="fleet-status">Demo status
+            <select id="fleet-status"><option value="">All statuses</option><option value="Operating">Operating</option><option value="Idle">Idle</option><option value="Maintenance">Maintenance</option><option value="Offline">Offline</option></select>
+          </label>
+          <button id="clear-fleet-search" type="button">Clear filters</button>
+        </div>
+        <p id="fleet-count" class="iot-small" role="status"></p>
+        <div id="fleet-cards" class="fleet-grid"></div>
+        <p id="fleet-empty" class="iot-panel" hidden>No sample cranes match your search. Try another ID or clear the filters.</p>
+        <noscript><p class="demo-notice">JavaScript is required to display the sample fleet, search and individual dashboards. No live telemetry is available.</p></noscript>
+      </section>
+      <template id="fleet-card-template">
+        <article class="iot-panel fleet-card">
+          <div class="panel-title"><h3><a data-fleet-link></a></h3><span class="badge" data-fleet-status></span></div>
+          <p data-fleet-model></p>
+          <p data-fleet-gateway></p>
+          <p class="iot-small">SIMULATED · Real telemetry: not connected</p>
+          <a data-fleet-open>Open monitoring →</a>
+        </article>
+      </template>
+
+      <section id="crane-detail" data-crane-demo aria-label="Individual simulated crane monitoring" hidden>
+        <p class="iot-small"><a href="crane-monitoring.html#fleet">← Back to Master Dashboard</a></p>
+        <div class="iot-panel">
+          <div class="equipment-header">
+            <div><p class="iot-eyebrow">SELECTED EQUIPMENT / DEMO</p><h2 id="equipment-name">Hydra Crane H-01</h2><p id="equipment-model">ACE Hydra / illustrative profile</p></div>
+            <label class="equipment-select" for="demo-equipment">Select sample crane
+              <select id="demo-equipment"></select>
+            </label>
+          </div>
+          <div class="equipment-meta"><span id="equipment-state" class="badge">SIMULATED STATE</span><span>Real device connection: <strong>NOT CONNECTED</strong> · Fleet: <span id="detail-fleet-size">12</span> sample assets</span></div>
+          <div class="demo-controls">
+            <button id="start-demo" type="button">▶ Start demo</button><button id="pause-demo" type="button" disabled>Ⅱ Pause</button><button id="test-alert" type="button">Test alert</button><button id="reset-demo" type="button">Reset demo</button>
+          </div>
+          <p id="sample-status" class="iot-small" role="status">Ready · static simulated sample · press Start demo</p>
+          <noscript><p>JavaScript is disabled. Values below are static demo examples; interactive controls require JavaScript.</p></noscript>
+        </div>
+        <div class="metrics-grid">
+          <article class="iot-panel metric"><h3>Engine RPM</h3><span class="badge">SIMULATED</span><strong><span data-reading="rpm">1373</span> <small>rpm</small></strong><p>Engine speed</p><meter data-meter="rpm" min="0" max="2500" value="1373" aria-label="Simulated engine speed"></meter></article>
+          <article class="iot-panel metric"><h3>Hydraulic pressure</h3><span class="badge">SIMULATED</span><strong><span data-reading="pressure">172</span> <small>bar</small></strong><p>Illustrative hydraulic circuit</p><meter data-meter="pressure" min="0" max="250" value="172" aria-label="Simulated hydraulic pressure"></meter></article>
+          <article class="iot-panel metric"><h3>Current load</h3><span class="badge">SIMULATED</span><strong><span data-reading="load">1.6</span> <small>t</small></strong><p>Demo value, not rated capacity</p><meter data-meter="load" min="0" max="5" value="1.6" aria-label="Simulated load"></meter></article>
+          <article class="iot-panel metric"><h3>Fuel level</h3><span class="badge">SIMULATED</span><strong><span data-reading="fuel">73</span><small>%</small></strong><p>Illustrative tank level</p><meter data-meter="fuel" min="0" max="100" value="73" aria-label="Simulated fuel level"></meter></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="iot-panel" aria-labelledby="parameters-title">
+            <div class="panel-title"><h2 id="parameters-title">Crane operating parameters</h2><span class="badge">ALL SIMULATED</span></div>
+            <dl class="reading-list">
+              <div><dt>Engine coolant temperature<small>Engine sensor example</small></dt><dd><span data-reading="coolant">81</span> °C</dd></div>
+              <div><dt>Boom angle<small>Inclinometer example</small></dt><dd><span data-reading="angle">42</span>°</dd></div>
+              <div><dt>Boom extension<small>Extension sensor example</small></dt><dd><span data-reading="extension">10</span> m</dd></div>
+              <div><dt>Battery voltage<small>12 V example; verify each machine</small></dt><dd><span data-reading="battery">13.8</span> V</dd></div>
+              <div><dt>Engine oil pressure<small>Engine sensor example</small></dt><dd><span data-reading="oil">3.6</span> bar</dd></div>
+              <div><dt>Outrigger state<small>Only applicable on equipped models</small></dt><dd>Not validated</dd></div>
+              <div><dt>GPS / location<small>No actual position collected</small></dt><dd>Demo only</dd></div>
+            </dl>
+          </section>
+          <section class="iot-panel" aria-labelledby="trend-title">
+            <div class="panel-title"><h2 id="trend-title">Load &amp; performance trend</h2><span class="badge">SIMULATED</span></div>
+            <p class="iot-small">Last 30 demo samples; 2-second interval. Independent display scales: pressure 0–250 bar; load 0–5 t. These are chart ranges, not safe operating limits.</p>
+            <svg class="trend" viewBox="0 0 480 200" role="img" aria-labelledby="chart-title chart-description">
+              <title id="chart-title">Simulated pressure and load trend</title><desc id="chart-description">Browser-generated samples only. Pressure is shown in green and load in yellow. No hardware data is plotted.</desc>
+              <path class="trend-grid" d="M36 32H446 M36 64H446 M36 96H446 M36 128H446 M36 160H446 M36 32V160"/>
+              <text x="1" y="36">100%</text><text x="14" y="164">0%</text><text x="36" y="188">Older samples</text><text x="365" y="188">Latest →</text>
+              <polyline id="pressure-trend" class="trend-pressure" points=""/><polyline id="load-trend" class="trend-load" points=""/>
+            </svg>
+            <div class="trend-key"><span>Pressure / 250 bar</span><span>Load / 5 t</span></div>
+            <dl class="reading-list"><div><dt>Engine hours</dt><dd><span data-reading="hours">2481.6</span> h · demo</dd></div><div><dt>Device connectivity</dt><dd>Not connected</dd></div><div><dt>Live-data timestamp</dt><dd>Unavailable</dd></div></dl>
+          </section>
+          <section class="iot-panel" aria-labelledby="health-title">
+            <div class="panel-title"><h2 id="health-title">Equipment health</h2><span class="badge">DEMO CONDITIONS</span></div>
+            <ul class="health-list"><li>Engine &amp; cooling <span class="badge" data-demo-health>NOT VALIDATED</span></li><li>Hydraulic pump &amp; circuit <span class="badge" data-demo-health>NOT VALIDATED</span></li><li>Load monitoring <span class="badge">NOT VALIDATED</span></li><li>Electrical / battery <span class="badge" data-demo-health>NOT VALIDATED</span></li><li>Outriggers / stability <span class="badge">MODEL DEPENDENT</span></li></ul>
+            <p class="iot-small">No diagnostics have been run on a real crane. OEM alarms, operator checks and certified safety systems remain authoritative.</p>
+          </section>
+          <section class="iot-panel" aria-labelledby="events-title">
+            <div class="panel-title"><h2 id="events-title">Safety &amp; alert log</h2><span class="badge">DEMO EVENTS</span></div>
+            <p id="alert-status" class="iot-small" role="status">No demo events. Test an alert to preview the workflow.</p>
+            <ol id="demo-events" class="event-list" aria-label="Simulated alert events"></ol>
+            <button id="clear-alerts" type="button">Clear demo alerts</button>
+            <p class="iot-small">Test alerts stay in this browser tab. No SMS, email, machine command or production notification is sent.</p>
+          </section>
+          <section class="iot-panel" aria-labelledby="gateway-title">
+            <div class="panel-title"><h2 id="gateway-title">Gateway &amp; connectivity</h2><span class="badge">DEMO CONFIGURATION</span></div>
+            <dl class="reading-list">
+              <div><dt>Assigned sample gateway</dt><dd id="gateway-id"></dd></div>
+              <div><dt>Simulated connection scenario</dt><dd id="gateway-scenario"></dd></div>
+              <div><dt>Actual gateway telemetry</dt><dd>NOT CONNECTED</dd></div>
+              <div><dt>Actual CAN/J1939 connection</dt><dd>Unavailable</dd></div>
+              <div><dt>Actual heartbeat / GNSS fix</dt><dd>Unavailable</dd></div>
+            </dl>
+          </section>
+          <section class="iot-panel" aria-labelledby="diagnostics-title">
+            <div class="panel-title"><h2 id="diagnostics-title">Diagnostics panel</h2><span class="badge">SIMULATED SCENARIO</span></div>
+            <p id="diagnostic-summary" class="iot-small"></p>
+            <dl class="reading-list">
+              <div><dt>Actual ECU fault codes</dt><dd>Not received</dd></div>
+              <div><dt>OEM decoder / calibration</dt><dd>Not commissioned</dd></div>
+              <div><dt>Real equipment health</dt><dd>Not assessed</dd></div>
+            </dl>
+            <p class="iot-small">An empty fault list does not mean a healthy machine. No real diagnostic messages or maintenance records have been received.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="architecture" class="iot-section" aria-labelledby="architecture-title">
+        <p class="iot-eyebrow">PROPOSED IMPLEMENTATION / NOT DEPLOYED</p>
+        <h2 id="architecture-title">Read-only monitoring for a mixed 10+ crane fleet</h2>
+        <p>CAN/J1939 availability is confirmed by your fleet brief; exact models, years, ECU variants, signal coverage and OEM permissions must be surveyed before purchasing hardware. No universal compatibility is assumed across these manufacturers.</p>
+        <div class="architecture-grid">
+          <article class="iot-panel"><span class="iot-step">01 / MACHINE &amp; SENSORS</span><h3>Prefer approved existing data</h3><ul><li>Read broadcast engine and machine data from an OEM-approved diagnostic or telematics interface using isolated, hardware-enforced listen-only CAN.</li><li>Use the existing certified LMI/SLI telemetry export for load, boom and rated-capacity data only when the OEM permits it.</li><li>If signals are unavailable, a qualified OEM-approved integrator specifies isolated pressure, inclination, extension or position sensors. Load sensing requires engineered calibration, not a pressure-to-tonnes shortcut.</li><li>Add independent gateway GNSS. Treat outrigger state as “not fitted” or “unknown” where appropriate; it does not establish stability.</li></ul></article>
+          <article class="iot-panel"><span class="iot-step">02 / EDGE GATEWAY</span><h3>One industrial gateway per crane</h3><ul><li>Rugged, vibration-rated enclosure; protected vehicle-power input matched to each crane's 12/24 V system; ignition sensing and controlled shutdown.</li><li>Isolated CAN/J1939, optional isolated analog/digital inputs or RS-485, GNSS and 4G/LTE with site-tested antennas and connectivity.</li><li>Model-specific approved decoder profiles, unit conversion, signal validity flags, UTC timestamps and device sequence numbers.</li><li>Encrypted store-and-forward storage sized for an agreed outage (initial target: 72 hours). Secure boot, signed updates, unique device identity and certificate rotation.</li></ul></article>
+          <article class="iot-panel"><span class="iot-step">03 / CLOUD &amp; OPERATIONS</span><h3>Managed telemetry, not control</h3><ul><li>MQTT over TLS with per-device authentication and topic permissions; HTTPS provisioning and signed firmware distribution.</li><li>Ingestion validates schemas, device-to-asset assignment, units, timestamps and signal quality; quarantine malformed data.</li><li>Use a time-series database for readings, an asset/configuration registry and durable alert history; apply retention, backups and recovery tests.</li><li>An authenticated API and WebSocket/SSE stream supply the fleet dashboard. Use roles for operators, maintenance teams and administrators.</li></ul></article>
+        </div>
+        <div class="data-flow" aria-label="Proposed telemetry data flow">OEM ECU / approved sensors → isolated listen-only gateway → encrypted offline queue → MQTT/TLS ingestion → validation &amp; quality checks → time-series storage + alert service → authenticated API / SSE → fleet dashboard</div>
+        <p class="iot-small">Read-only means no CAN transmission, remote engine stop, hydraulic actuation, LMI override or control commands from this system. A passive interface cannot request signals that are not already broadcast; those stay unavailable unless a separate OEM-approved telemetry export exists.</p>
+      </section>
+
+      <section id="signal-map" class="iot-section" aria-labelledby="signals-title">
+        <h2 id="signals-title">Signal availability: verify per serial number</h2>
+        <div class="table-scroll"><table class="iot-table"><caption class="iot-small">Candidate sources for commissioning; none are live on this website.</caption><thead><tr><th scope="col">Reading</th><th scope="col">Candidate source</th><th scope="col">Validation / missing-data behavior</th></tr></thead><tbody>
+          <tr><td>RPM, coolant, oil pressure, hours, fuel, voltage</td><td>Broadcast J1939 engine/ECU signals where supported</td><td>Confirm PGN/SPN, scale, units, availability and ECU identity against licensed OEM definitions and instruments. Mark absent/error values unavailable, never zero.</td></tr>
+          <tr><td>Hydraulic pressure</td><td>OEM hydraulic ECU export or approved pressure transducer</td><td>Pressure range, placement, isolation and calibration selected by the integrator. Not a stand-alone load calculation.</td></tr>
+          <tr><td>Boom angle and extension</td><td>OEM crane controller/LMI export or approved calibrated sensors</td><td>Often proprietary; require model-specific documentation. Record calibration version and uncertainty.</td></tr>
+          <tr><td>Load, radius, capacity utilization</td><td>Approved certified LMI/SLI export</td><td>Requires configuration-specific rating data and OEM validation. Otherwise show unavailable. Do not infer safe capacity from generic J1939 or this demo.</td></tr>
+          <tr><td>Outriggers, chassis inclination</td><td>Fitted OEM status or approved dedicated sensors</td><td>Not all cranes have outriggers; “extended” alone does not prove setup or stability. Preserve unknown/not-fitted states.</td></tr>
+          <tr><td>Position, connectivity</td><td>Gateway GNSS, heartbeat and server receipt time</td><td>Store fix quality and age. Distinguish “no fix,” gateway offline and stale machine signals.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="integration" class="iot-section" aria-labelledby="integration-title">
+        <h2 id="integration-title">Dashboard integration &amp; data provenance</h2>
+        <div class="architecture-grid">
+          <article class="iot-panel"><h3>Separate demo from production</h3><p>Use separate device identities, broker topics, storage and API permissions for simulation and production. Only authenticated, server-validated physical-device telemetry may be labeled LIVE. Never silently replace missing live data with synthetic values.</p><p>Current page: simulation only. There is no broker, API, database or live adapter deployed by this page.</p></article>
+          <article class="iot-panel"><h3>Age and quality on every signal</h3><p>Retain measured-at and received-at timestamps, source, unit, decoder/calibration version and quality per reading. Show STALE, OFFLINE, UNAVAILABLE or REPLAYED instead of a healthy badge when appropriate.</p><p>Initial engineering target: flag a 2-second signal stale after 10 seconds and gateway offline after 60 seconds without heartbeat. Tune by OEM update rates and field trials; these are not safety deadlines.</p></article>
+          <article class="iot-panel"><h3>Fleet operations &amp; alerts</h3><p>Group by asset, site and model; show maintenance hours, connectivity and historical trends. Use OEM-approved warning thresholds with duration, hysteresis, deduplication and acknowledgement history. Do not issue “all clear” from missing signals.</p><p>Backfilled records update history, not current freshness. Deduplicate using device ID, boot/session ID and sequence. Route approved alerts via backend services, not browser credentials.</p></article>
+        </div>
+        <div class="iot-panel">
+          <h3>Recommended pilot software stack</h3>
+          <p class="iot-small">A concrete, vendor-neutral starting point is Mosquitto for MQTT/TLS ingestion, a Node.js validation/ingestion worker, PostgreSQL with TimescaleDB for telemetry, PostgreSQL tables for assets/configuration/events, and an OIDC identity provider for staff login. Run services on a secured private network behind an HTTPS reverse proxy, with managed backups, health checks and restricted administration. Select production hosting, availability and support requirements before rollout.</p>
+          <p class="iot-small">Implement <code>GET /api/v1/assets</code>, <code>GET /api/v1/assets/{id}/latest</code>, <code>GET /api/v1/assets/{id}/history</code> and <code>GET /api/v1/events/stream</code> (SSE), all authenticated and asset-authorized. The API returns per-reading provenance and age; reconnecting clients refetch latest state. These are proposed contracts, not working endpoints on this static site. Replace the simulator with a separately reviewed live adapter only after backend and device acceptance.</p>
+          <p class="iot-small">Initial retention proposal: 90 days of raw samples and 12 months of hourly aggregates, subject to customer policy and measured volume. At 15 cranes, the 1 KB / 2-second estimate is about 648 MB/day of payload before indexing, replication, backups and protocol overhead. Test replay bursts as well as steady-state ingestion.</p>
+        </div>
+        <details class="iot-panel"><summary>Example telemetry contract (synthetic, not a real device payload)</summary>
+          <pre class="iot-code"><code>{
+  "schemaVersion": 1,
+  "assetId": "DEMO-H-01",
+  "deviceId": "demo-gateway-01",
+  "sessionId": "demo-session-01",
+  "sequence": 1,
+  "mode": "simulation",
+  "measuredAt": "2026-10-20T12:00:00Z",
+  "receivedAt": "2026-10-20T12:00:01Z",
+  "decoderVersion": "demo-v1",
+  "readings": {
+    "engineRpm": {
+      "value": 1373, "unit": "rpm",
+      "source": "simulator", "quality": "simulated"
+    },
+    "ratedCapacity": {
+      "value": null, "unit": "t",
+      "source": "not-configured", "quality": "unavailable"
+    }
+  }
+}</code></pre>
+          <p class="iot-small">The production backend must bind asset and device identities and enforce physical source classification; it must not trust a client's “live” flag. Store calibration metadata for added sensors. Proposed topic: fleet/{fleetId}/devices/{deviceId}/telemetry with per-device ACLs, QoS 1 and idempotent consumers. Keep credentials off the public website.</p>
+        </details>
+      </section>
+
+      <section id="deployment" class="iot-section iot-panel" aria-labelledby="deployment-title">
+        <h2 id="deployment-title">Deployment: survey → pilot → validate → fleet rollout</h2>
+        <ol class="deployment-list">
+          <li><strong>Inventory and OEM approval.</strong> List every crane's model, year, serial number, voltage, controller, LMI/SLI, documentation, warranty constraints and allowed interface. Agree data ownership and signal access with OEMs. Do not order a fleet-wide harness before the survey.</li>
+          <li><strong>Bench qualification.</strong> Validate listen-only behavior, isolation, approved decoding, unavailable/error values, authentication, local buffering, power-loss recovery and signed updates. Installation and electrical/hydraulic work are for qualified OEM-approved technicians only; this page is not wiring guidance.</li>
+          <li><strong>Representative pilot.</strong> Begin with 2–3 approved machines and add a pilot for each untested model/controller variant. Compare telemetry against OEM instruments and calibration records. Confirm no interference with machine operation or diagnostic systems under the OEM's procedure.</li>
+          <li><strong>Deploy the ingestion stack.</strong> Provision device certificates, broker ACLs, registry, schema validation, time-series database, dashboards and audited role access. Set initial 2-second edge aggregation while running, a 30-second heartbeat and a 5-second cloud publish batch; tune to data plan, coverage and approved signal rates.</li>
+          <li><strong>Field acceptance.</strong> Agree signal-specific accuracy tolerances with OEM/integrator before sign-off. Test loss of coverage and the 72-hour buffer target, out-of-order/duplicate replay, sensor failure, stale/offline display, certificate revocation and alert acknowledgement. No LIVE status until the asset's approved signals pass acceptance.</li>
+          <li><strong>Roll out in waves.</strong> Expand in batches of 3–5 cranes after acceptance, retaining the previous signed configuration for rollback. Record device/asset mapping and calibration, train maintenance staff, assign incident ownership and test backup restore. Review signal drift, firmware and data costs regularly.</li>
+        </ol>
+        <p class="iot-small"><strong>Capacity planning:</strong> At one 1 KB aggregated message every 2 seconds, each crane produces about 43 MB/day before protocol overhead. Multiply by actual crane count and operating hours, measure real payload sizes, then size mobile plans, disk, retention and ingest capacity with headroom. A 5-second publish batch does not change the underlying sample volume.</p>
+        <p class="iot-small"><strong>Safety boundary:</strong> Certified crane safety systems and trained operators remain authoritative. This dashboard supports maintenance and visibility only. Site deployment requires OEM review and applicable regulatory approvals; no monitoring alert replaces an emergency procedure.</p>
+      </section>
+      <section class="iot-section iot-panel" aria-labelledby="reference-title">
+        <h2 id="reference-title">Your reference &amp; technical background</h2>
+        <details><summary>View your supplied dashboard image</summary><img class="reference-image" src="assets/crane-dashboard-reference.png" alt="User-supplied dark crane dashboard design reference with gauges, trend, health and demo controls" width="338" height="642" loading="lazy"><p class="iot-small">Design reference only. Any status or reading within this image is not verified live telemetry.</p></details>
+        <p class="iot-small">Background: <a href="https://www.csselectronics.com/pages/j1939-explained-simple-intro-tutorial" target="_blank" rel="noopener noreferrer">J1939 concepts: PGNs, SPNs, broadcast versus request</a>. Exact decoding requires authorized OEM definitions; this general reference is not evidence of compatibility with a specific crane.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-top"><a class="brand footer-brand" href="index.html#home"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></a><p>Monitoring prototype · no live hardware connected.</p><a class="back-top" href="#top">Back to top ↑</a></div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> LiftX Infra. All rights reserved.</span><span>Safety · Quality · Progress</span></div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="crane-monitoring.js"></script>
+</body>
+</html>

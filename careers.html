@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore careers at LiftX Infra. We are hiring crane and JCB operators, civil engineers, skilled construction workers and supervisors.">
+  <meta name="description" content="Explore LiftX Infra careers in crane operations, civil construction, IoT, IT support, cybersecurity, cloud, software, automation, data, networking and crane IoT monitoring.">
   <title>Careers | LiftX Infra</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,6 +63,22 @@
     }
     .career-card:last-child {
       grid-column: 1 / -1;
+    }
+    .technology-careers {
+      padding-top: 0;
+      scroll-margin-top: 120px;
+    }
+    .career-area {
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-size: 21px;
+    }
+    .career-card .career-category {
+      margin-top: 0;
+      color: #876700;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .5px;
     }
     .career-card h3 {
       margin: 0 0 12px;
@@ -164,24 +180,28 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body class="careers-page">
   <header class="site-header">
-    <a class="brand" href="index.html#home" aria-label="LiftX Infra home"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></a>
+    <a class="brand" href="index.html#home" aria-label="LiftX Infra home"><img class="brand-logo" src="assets/liftx-logo.png" alt="LiftX Infra" width="1175" height="480"><span class="brand-text"><span class="brand-mark">Lift<span>X</span>Infra</span><span class="brand-tagline">LIFTING TODAY <b>|</b> BUILDING TOMORROW</span></span></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav class="nav">
       <a href="index.html#home">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a>
-      <a href="index.html#clients">Clients</a><a href="projects.html">Projects</a>
+      <a href="projects.html">Projects</a><a href="crane-monitoring.html">Crane IoT Monitoring</a>
       <div class="technology-nav-item">
         <button class="technology-menu-toggle" type="button" aria-expanded="false" aria-controls="technologyDropdown">Technology <span class="technology-menu-chevron" aria-hidden="true">▾</span></button>
         <div class="technology-dropdown" id="technologyDropdown" hidden>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">▣</span>Managed IT Services</h2><ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♢</span>Cybersecurity</h2><ul><li>MSSP</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">&lt;/&gt;</span>Software Development</h2><ul><li>Web Apps</li><li>Mobile Apps</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">☁</span>Cloud &amp; Infrastructure</h2><ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Data Centers</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♧</span>IT Consulting</h2><ul><li>Digital Transformation</li><li>IT Strategy</li><li>BI &amp; Analytics</li><li>ERP &amp; CRM</li></ul></section>
-          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true">♙</span>IT Staffing &amp; Training</h2><ul><li>Staff Augmentation</li><li>IT Recruitment</li><li>Training &amp; Certification</li><li>Outsourcing</li></ul></section>
-          <div class="technology-menu-footer"><a href="technology.html">Explore Technology <span aria-hidden="true">→</span></a></div>
+          <div class="technology-menu-intro"><span>Technology</span><strong>Smarter Infrastructure <em>with Technology</em></strong><p>We bring together modern IT, IoT and data insights to support safer, smarter and more efficient infrastructure.</p></div>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Internet of Things (IoT)</h2><ul><li>Industrial IoT (IIoT)</li><li>IoT Device Integration</li><li>Sensor &amp; Data Analytics</li><li>Real-time Monitoring</li><li>Edge Computing</li><li>IoT Platforms &amp; Dashboards</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Managed IT Services</h2><ul><li>IT Support &amp; Helpdesk</li><li>Network Management</li><li>Disaster Recovery</li><li>Managed Cloud</li><li>Endpoint Management</li><li>IT Infrastructure</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Cybersecurity</h2><ul><li>MSSP (Managed Security)</li><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Firewall &amp; Network Security</li><li>Security Monitoring (SOC)</li><li>Compliance &amp; Risk Management</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Cloud &amp; Infrastructure</h2><ul><li>Cloud Migration</li><li>AWS / Azure / GCP</li><li>DevOps &amp; CI/CD</li><li>Containerization (Docker, Kubernetes)</li><li>Data Centers</li><li>Hybrid &amp; Multi-Cloud</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Software Development</h2><ul><li>Web Applications</li><li>Mobile Applications</li><li>AI &amp; Machine Learning</li><li>SaaS Development</li><li>API Development</li><li>UI/UX Design</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Automation &amp; Industry 4.0</h2><ul><li>Industrial Automation</li><li>SCADA &amp; Control Systems</li><li>Predictive Maintenance</li><li>Digital Twins</li><li>Robotics Integration</li><li>Smart Manufacturing</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Data &amp; Analytics</h2><ul><li>Big Data Solutions</li><li>Business Intelligence</li><li>Data Visualization</li><li>AI/ML Solutions</li><li>Data Lake &amp; Warehousing</li><li>Analytics for Operations</li></ul></section>
+          <section class="technology-menu-group"><h2><span class="technology-menu-icon" aria-hidden="true"></span>Networking &amp; Connectivity</h2><ul><li>5G &amp; Private Networks</li><li>Industrial Networking</li><li>Wireless Solutions</li><li>SD-WAN</li><li>IoT Connectivity (LTE, LoRa, NB-IoT)</li><li>Network Design &amp; Optimization</li></ul></section>
+          <div class="technology-menu-footer"><a href="crane-monitoring.html">Crane IoT Monitoring <span aria-hidden="true">→</span></a><p>From cloud to AI — building what's next.</p><a href="technology.html">Explore All Technology <span aria-hidden="true">→</span></a></div>
         </div>
       </div>
       <a href="contact.html">Contact</a>
@@ -194,7 +214,8 @@
       <div class="container">
         <p class="eyebrow">CAREERS AT LIFTX INFRA</p>
         <h1>Careers <span>| We Are Hiring</span></h1>
-        <p>Join LiftX Infra, a growing company in crane services, infrastructure and civil construction. We are looking for skilled, reliable people to join our team, with competitive pay, a safety-focused work culture and opportunities to grow.</p>
+        <p>Join LiftX Infra across crane services, infrastructure, civil construction and technology. We welcome skilled operators, engineers, IT professionals and Crane IoT specialists who want to build reliable solutions, with competitive pay, a safety-focused work culture and opportunities to grow.</p>
+        <p><a class="button button-yellow" href="#technology-careers">Explore Technology &amp; Crane IoT Careers <span aria-hidden="true">→</span></a></p>
       </div>
     </section>
     <section class="section container careers-section" id="open-positions">
@@ -202,6 +223,7 @@
         <div><p class="eyebrow dark">BUILD YOUR FUTURE WITH US</p><h2>Open Positions</h2></div>
         <p>Find the role that fits your skills and experience. Send us your name, the position you are applying for, your experience and copies of any relevant licenses or certificates.</p>
       </div>
+      <h3 class="career-area">Crane Operations &amp; Civil Construction</h3>
       <div class="career-grid">
         <article class="career-card">
           <h3><span>01</span>Crane Operator</h3>
@@ -240,6 +262,88 @@
         </article>
       </div>
     </section>
+    <section class="section container careers-section technology-careers" id="technology-careers" aria-labelledby="technology-careers-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow dark">BUILD CONNECTED POSSIBILITIES</p><h2 id="technology-careers-heading">Technology &amp; Crane IoT Careers</h2></div>
+        <p>Explore career opportunities across all eight <a href="technology.html">Technology service areas</a> and <a href="crane-monitoring.html">Crane IoT Monitoring</a>. Share your preferred role and relevant experience; role availability and project assignments will be discussed during recruitment.</p>
+      </div>
+      <div class="career-grid">
+        <article class="career-card">
+          <p class="career-category">Internet of Things (IoT)</p>
+          <h3><span>06</span>IoT &amp; Embedded Systems Engineer</h3>
+          <p><strong>Role:</strong> Integrate industrial devices, sensors and edge gateways with monitoring platforms.</p>
+          <p><strong>Service focus:</strong> Industrial IoT (IIoT), IoT Device Integration, Sensor &amp; Data Analytics, Real-time Monitoring, Edge Computing, IoT Platforms &amp; Dashboards.</p>
+          <p><strong>Requirements and skills:</strong> Electronics, electrical, computer engineering or relevant hands-on experience; embedded programming, MQTT, device protocols, sensor testing and troubleshooting.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20IoT%20and%20Embedded%20Systems%20Engineer">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Managed IT Services</p>
+          <h3><span>07</span>IT Support &amp; Systems Engineer</h3>
+          <p><strong>Role:</strong> Support users, maintain business systems and coordinate dependable IT operations.</p>
+          <p><strong>Service focus:</strong> IT Support &amp; Helpdesk, Network Management, Disaster Recovery, Managed Cloud, Endpoint Management, IT Infrastructure.</p>
+          <p><strong>Requirements and skills:</strong> IT diploma, degree or relevant support experience; Windows/Linux administration, ticket handling, endpoint tools, backups, recovery testing and clear communication.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20IT%20Support%20and%20Systems%20Engineer">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Cybersecurity</p>
+          <h3><span>08</span>Cybersecurity Analyst / Security Engineer</h3>
+          <p><strong>Role:</strong> Monitor security events, assess authorized systems and help teams reduce operational risk.</p>
+          <p><strong>Service focus:</strong> MSSP (Managed Security), Penetration Testing, Vulnerability Assessment, Firewall &amp; Network Security, Security Monitoring (SOC), Compliance &amp; Risk Management.</p>
+          <p><strong>Requirements and skills:</strong> Security training or relevant experience; SIEM tools, incident triage, access controls, firewall policies, assessment reporting and testing only within approved scope.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20Cybersecurity%20Analyst%20or%20Security%20Engineer">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Cloud &amp; Infrastructure</p>
+          <h3><span>09</span>Cloud &amp; DevOps Engineer</h3>
+          <p><strong>Role:</strong> Build, migrate and maintain secure cloud infrastructure and reliable delivery pipelines.</p>
+          <p><strong>Service focus:</strong> Cloud Migration, AWS / Azure / GCP, DevOps &amp; CI/CD, Containerization (Docker, Kubernetes), Data Centers, Hybrid &amp; Multi-Cloud.</p>
+          <p><strong>Requirements and skills:</strong> Relevant cloud or systems experience; Linux, infrastructure as code, containers, CI/CD, identity management, observability and backup planning.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20Cloud%20and%20DevOps%20Engineer">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Software Development</p>
+          <h3><span>10</span>Software Developer / UI/UX Designer</h3>
+          <p><strong>Role:</strong> Develop web, mobile and SaaS products or design accessible, user-friendly digital experiences.</p>
+          <p><strong>Service focus:</strong> Web Applications, Mobile Applications, AI &amp; Machine Learning, SaaS Development, API Development, UI/UX Design.</p>
+          <p><strong>Requirements and skills:</strong> Relevant qualification or project portfolio; role-specific programming or design tools, APIs, databases, version control, testing and collaborative delivery. State your preferred development or design specialization.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20Software%20Development%20or%20UI%20UX%20Design">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Automation &amp; Industry 4.0</p>
+          <h3><span>11</span>Industrial Automation Engineer</h3>
+          <p><strong>Role:</strong> Integrate industrial controls and equipment data to support smarter manufacturing and maintenance.</p>
+          <p><strong>Service focus:</strong> Industrial Automation, SCADA &amp; Control Systems, Predictive Maintenance, Digital Twins, Robotics Integration, Smart Manufacturing.</p>
+          <p><strong>Requirements and skills:</strong> Electrical, instrumentation, mechatronics or relevant industrial experience; PLC/SCADA, industrial protocols, commissioning, documentation and site safety.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20Industrial%20Automation%20Engineer">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Data &amp; Analytics</p>
+          <h3><span>12</span>Data Engineer / BI &amp; AI Analyst</h3>
+          <p><strong>Role:</strong> Turn business and equipment data into dependable pipelines, reports and analytical models.</p>
+          <p><strong>Service focus:</strong> Big Data Solutions, Business Intelligence, Data Visualization, AI/ML Solutions, Data Lake &amp; Warehousing, Analytics for Operations.</p>
+          <p><strong>Requirements and skills:</strong> Relevant data experience or project portfolio; SQL, Python, ETL, data quality, dashboard tools and model evaluation appropriate to your specialization.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20Data%20Engineering%20BI%20or%20AI%20Analytics">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Networking &amp; Connectivity</p>
+          <h3><span>13</span>Network &amp; Connectivity Engineer</h3>
+          <p><strong>Role:</strong> Design and support reliable connectivity for offices, industrial sites and connected devices.</p>
+          <p><strong>Service focus:</strong> 5G &amp; Private Networks, Industrial Networking, Wireless Solutions, SD-WAN, IoT Connectivity (LTE, LoRa, NB-IoT), Network Design &amp; Optimization.</p>
+          <p><strong>Requirements and skills:</strong> Networking training or relevant deployment experience; routing, switching, wireless surveys, VPNs, cellular gateways, network diagnostics and documentation.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20Network%20and%20Connectivity%20Engineer">Apply for this role <span>→</span></a>
+        </article>
+        <article class="career-card">
+          <p class="career-category">Crane IoT Monitoring Services</p>
+          <h3><span>14</span>Crane IoT Integration Engineer / Field Technician</h3>
+          <p><strong>Role:</strong> Support OEM-approved telemetry integration for ACE Hydra, Escorts Kubota / Farana and TIL / Manitowoc cranes, from field installation to fleet dashboards.</p>
+          <p><strong>Service focus:</strong> Passive CAN/J1939 data acquisition, sensor installation and calibration, industrial LTE/GNSS gateways, engine and hydraulic monitoring, load and fuel telemetry, fleet dashboards, alerts and gateway diagnostics. Signal availability must be verified for each crane.</p>
+          <p><strong>Requirements and skills:</strong> Electronics, instrumentation, automotive engineering or relevant field experience; CAN/J1939 diagnostics, electrical schematics, MQTT/TLS, gateway commissioning and safe on-site troubleshooting. State whether you are applying for integration engineering or field installation.</p>
+          <p><strong>Safety and data integrity:</strong> Use isolated, OEM-approved read-only connections; never bypass crane safety systems or write control commands to the CAN bus. Keep simulated, unavailable and verified live readings clearly separated.</p>
+          <p><strong>Current platform:</strong> Our <a href="crane-monitoring.html">12-crane dashboard</a> is a browser simulation only. No real gateway telemetry is connected; live integration is planned work, not an existing deployment.</p>
+          <a class="text-link" href="mailto:liftxinfra@gmail.com?subject=Application%20-%20Crane%20IoT%20Integration%20Engineer%20or%20Field%20Technician">Apply for this role <span>→</span></a>
+        </article>
+      </div>
+    </section>
     <section class="career-details">
       <div class="container career-details-grid">
         <article class="career-detail-card">
@@ -256,7 +360,7 @@
           <h2>How to Apply</h2>
           <p class="career-address">Call or WhatsApp: <a href="https://wa.me/918369649443">+91 83696 49443</a><br>Email: <a href="mailto:liftxinfra@gmail.com">liftxinfra@gmail.com</a></p>
           <p class="career-address"><strong>Office:</strong> D-27/1, Block, Gurunanak Dev Colony, Bhalswa Dairy, Delhi - 110042</p>
-          <p class="career-note">Send your name, the position you are applying for, your experience and a copy of your license or certificates, if available.</p>
+          <p class="career-note">Send your name, preferred role or technology specialization, experience, location and CV. Include relevant licenses or certificates where applicable. Technology applicants may also share portfolio, GitHub or project links; Crane IoT applicants should mention equipment, CAN/J1939, gateway or field installation experience.</p>
           <div class="career-contact">
             <a class="button button-yellow" href="https://wa.me/918369649443?text=Hello%20LiftX%20Infra%2C%20I%27m%20interested%20in%20a%20job%20opening.">Apply on WhatsApp <span>→</span></a>
             <a class="button button-navy" href="mailto:liftxinfra@gmail.com?subject=Careers%20at%20LiftX%20Infra">Email your application <span>→</span></a>

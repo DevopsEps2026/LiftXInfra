@@ -1,0 +1,59 @@
+:root {
+  --page-blue: #eef6fd;
+  --section-blue: #e2effb;
+  --surface-blue: #f5faff;
+  --accent-blue: #175ea8;
+  --pale: var(--section-blue);
+  --line: #c9dced;
+  --muted: #4e647b;
+}
+
+body {
+  background: var(--page-blue);
+}
+
+.site-header {
+  background: var(--surface-blue);
+}
+
+.about-section,
+.contact-section,
+.career-details,
+.technology-section {
+  background: var(--section-blue);
+}
+
+.technology-section,
+.technology-inner h2 {
+  color: var(--navy);
+}
+
+.technology-copy p {
+  color: var(--muted);
+}
+
+.technology-section .eyebrow,
+.tech-orbit span {
+  color: var(--accent-blue);
+}
+
+.tech-orbit,
+.tech-orbit i,
+.tech-orbit b,
+.tech-orbit em {
+  border-color: #8bb6df;
+}
+
+.careers-hero {
+  color: var(--navy);
+  background: linear-gradient(110deg, var(--section-blue), var(--page-blue));
+}
+
+.careers-hero h1 span,
+.careers-hero .eyebrow {
+  color: var(--accent-blue);
+}
+
+.careers-hero p:not(.eyebrow) {
+  color: var(--muted);
+}
