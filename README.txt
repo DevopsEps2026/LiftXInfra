@@ -44,7 +44,7 @@ Keep these paths and filenames in place when publishing: the HTML pages refer to
 - The former Clients menu entry was replaced by Crane IoT Monitoring; the homepage client carousel remains.
 - Every header places the supplied LXI image at the far-left edge, separate from the LiftX Infra name and tagline. Footer text branding remains unchanged.
 - Mobile navigation opens with the menu button and closes when a link is selected.
-- The Technology button opens an eight-category mega-menu. Outside click and Escape close it; Escape restores focus to the button.
+- The Technology button opens an eight-category mega-menu. Its top-left Back button closes the menu without navigating away and restores focus to Technology. Outside click and Escape also close it; Escape restores focus to the button.
 - The menu uses a navy introduction sidebar, local cloud/network artwork, colored vector icons and a pale-blue action bar linking monitoring and the Technology overview.
 - Wide desktop menus use four service columns/two rows beside the sidebar. Smaller desktops use two columns; tablets stack the introduction above two columns. Mobile uses one or two columns within scrollable navigation. The menu height is capped to the viewport.
 - Menu action links use `#464feb` without underlines. Service descriptions are informational text, not inactive links.

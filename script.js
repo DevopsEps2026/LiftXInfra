@@ -28,6 +28,10 @@ if (technologyMenuToggle) {
     if (returnFocus) technologyMenuToggle.focus();
   };
 
+  technologyDropdown.querySelector('.technology-menu-back').addEventListener('click', () => {
+    closeTechnologyDropdown(true);
+  });
+
   technologyMenuToggle.addEventListener('click', () => {
     const isOpen = technologyMenuToggle.getAttribute('aria-expanded') === 'true';
     technologyMenuToggle.setAttribute('aria-expanded', String(!isOpen));

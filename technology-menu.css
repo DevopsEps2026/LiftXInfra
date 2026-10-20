@@ -82,6 +82,27 @@
   background: url("assets/technology-network.svg") center bottom / contain no-repeat;
 }
 
+.technology-menu-intro .technology-menu-back {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  padding: 9px 14px;
+  border: 1px solid #8bb6df;
+  border-radius: 6px;
+  background: #fff;
+  color: #062544;
+  font: 700 12px Inter, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.technology-menu-intro .technology-menu-back:hover {
+  background: #e6f1ff;
+}
+
+.technology-menu-intro .technology-menu-back:focus-visible {
+  outline: 3px solid #ffc928;
+  outline-offset: 4px;
+}
+
 .technology-menu-intro span {
   display: block;
   margin-bottom: 14px;
